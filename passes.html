@@ -345,6 +345,26 @@
                 <div class="game-info"><h3>Fortnite 13,500 V-Bucks</h3><p>Fortnite • 13,500 V-Bucks • Delivered to your account</p><div class="game-bottom"><strong>$89.99</strong><button class="add-btn" type="button" aria-label="Add item to cart">+</button></div></div>
             </div>
         </div>
+        <h2 class="passes-sub">Apps &amp; Subscriptions</h2>
+        <div class="game-grid">
+            <div class="game-card pass-card" data-category="apps" data-name="Spotify Premium" data-price="4.99">
+                <div class="pass-art" style="background:linear-gradient(135deg,#191414,#1db954)"><span class="pass-emoji">🎧</span><span class="cover-tag">APP</span></div>
+                <div class="game-info"><h3>Spotify Premium</h3><p>Music • Premium account • Delivered after your order</p><div class="game-bottom"><strong>$4.99</strong><button class="add-btn" type="button" aria-label="Add item to cart">+</button></div></div>
+            </div>
+            <div class="game-card pass-card" data-category="apps" data-name="WhatsApp+" data-price="2.99">
+                <div class="pass-art" style="background:linear-gradient(135deg,#075e54,#25d366)"><span class="pass-emoji">💬</span><span class="cover-tag">APP</span></div>
+                <div class="game-info"><h3>WhatsApp+</h3><p>Messaging • Extra features • Delivered after your order</p><div class="game-bottom"><strong>$2.99</strong><button class="add-btn" type="button" aria-label="Add item to cart">+</button></div></div>
+            </div>
+            <div class="game-card pass-card" data-category="apps" data-name="Snapchat+" data-price="3.99">
+                <div class="pass-art" style="background:linear-gradient(135deg,#ff9800,#fffc00)"><span class="pass-emoji">👻</span><span class="cover-tag">APP</span></div>
+                <div class="game-info"><h3>Snapchat+</h3><p>Social • Premium features • Delivered after your order</p><div class="game-bottom"><strong>$3.99</strong><button class="add-btn" type="button" aria-label="Add item to cart">+</button></div></div>
+            </div>
+            <div class="game-card pass-card" data-category="apps" data-name="Shahid VIP" data-price="5.99">
+                <div class="pass-art" style="background:linear-gradient(135deg,#0a2a43,#00c2a8)"><span class="pass-emoji">📺</span><span class="cover-tag">APP</span></div>
+                <div class="game-info"><h3>Shahid VIP</h3><p>Series and movies • VIP access • Delivered after your order</p><div class="game-bottom"><strong>$5.99</strong><button class="add-btn" type="button" aria-label="Add item to cart">+</button></div></div>
+            </div>
+        </div>
+        <p class="gz-more">✨ More apps will be added soon!</p>
     </section>
 
     <!-- FOOTER -->
@@ -1591,6 +1611,7 @@
     .pass-emoji { font-size: 64px; filter: drop-shadow(0 6px 14px rgba(0,0,0,.35)); }
     .back-btn { display: inline-block; margin-bottom: 22px; }
     .passes-section { padding-top: 30px; }
+    .gz-more{margin-top:26px;padding:14px 18px;border-radius:14px;text-align:center;font-weight:700;background:linear-gradient(90deg,rgba(0,255,136,.12),rgba(0,183,255,.12));border:1px dashed rgba(0,255,136,.5);animation:gzPulse 3s ease-in-out infinite}
     .passes-section .passes-sub { margin-top: 48px; }
 </style>
 
@@ -1612,7 +1633,11 @@
         "Free Fire 2500 Coins": "",
         "Free Fire 5000 Coins": "",
         "PUBG (all UC)": "https://www.itp.net/cloud/2021/08/19/SADG6MgH-PUBGMobile-1-1-1200x675.jpg",
-        "Fortnite (all V-Bucks)": "https://cms-assets.unrealengine.com/cm6l5gfpm05kr07my04cqgy2x/cmpzkp7470hn107oikhoxsef9"
+        "Fortnite (all V-Bucks)": "https://cms-assets.unrealengine.com/cm6l5gfpm05kr07my04cqgy2x/cmpzkp7470hn107oikhoxsef9",
+        "Spotify Premium": "https://m.media-amazon.com/images/I/51nVl+kXKJL._AC_UF1000,1000_QL80_.jpg",
+        "WhatsApp+": "https://static-images.aptoide.com/_next/image?url=https%3A%2F%2Fcdn.aptoide.com%2Fimgs%2Fc%2F2%2F5%2Fc253cb2d71508e03763b95d66b3b4ca4_fgraphic.png&w=3840&q=60",
+        "Snapchat+": "https://link.snapchat.com/plus/plus.png",
+        "Shahid VIP": "https://static.arrajol.com/users/user466146/%D8%B4%D8%B9%D8%A7%D8%B1-%D9%85%D9%86%D8%B5%D8%A9-%D8%B4%D8%A7%D9%87%D8%AF.png"
     };
     document.querySelectorAll(".pass-card").forEach(card => {
         const name = card.dataset.name;
@@ -2537,7 +2562,7 @@ body.light .gz-chip.on{background:#00c26e;color:#fff}
   function applyFilters(){
     $$('.game-card').forEach(c=>c.classList.toggle('gz-wish-hide',wishOnly&&!wish.includes(c.dataset.name)));
     grids.forEach(g=>{const cards=$$('.game-card',g);const match=type==='all'||cards.some(c=>c.dataset.category===type);
-      g.classList.toggle('gz-type-hide',!match);const p=g.previousElementSibling;if(p&&p.tagName==='H2')p.classList.toggle('gz-type-hide',!match);
+      g.classList.toggle('gz-type-hide',!match);const mn=g.nextElementSibling;if(mn&&mn.classList.contains('gz-more'))mn.classList.toggle('gz-type-hide',!match);const p=g.previousElementSibling;if(p&&p.tagName==='H2')p.classList.toggle('gz-type-hide',!match);
       let em=g.nextElementSibling&&g.nextElementSibling.classList.contains('gz-empty')?g.nextElementSibling:null;
       const vis=cards.some(c=>!c.classList.contains('gz-wish-hide')&&!c.hidden);
       if(wishOnly&&match&&!vis){if(!em){em=document.createElement('p');em.className='gz-empty';g.after(em)}em.textContent='No wishlist items here yet — tap the ♡ on any card.'}else if(em)em.remove();});
@@ -2547,7 +2572,7 @@ body.light .gz-chip.on{background:#00c26e;color:#fff}
     cards.forEach(c=>g.appendChild(c));});}
   if(first){
     const tb=document.createElement('div');tb.className='gz-toolbar';
-    if($('.pass-card')){[['all','All'],['pass','Game Passes'],['coins','Free Fire Coins'],['pubg','PUBG UC'],['fortnite','Fortnite V-Bucks']].forEach(([v,l])=>{const b=document.createElement('button');b.type='button';b.className='gz-chip'+(v==='all'?' on':'');b.textContent=l;
+    if($('.pass-card')){[['all','All'],['pass','Game Passes'],['coins','Free Fire Coins'],['pubg','PUBG UC'],['fortnite','Fortnite V-Bucks'],['apps','Apps']].forEach(([v,l])=>{const b=document.createElement('button');b.type='button';b.className='gz-chip'+(v==='all'?' on':'');b.textContent=l;
       b.onclick=()=>{type=v;$$('.gz-chip[data-type]',tb).forEach(x=>x.classList.toggle('on',x===b));applyFilters()};b.dataset.type=v;tb.appendChild(b)})}
     const sp=document.createElement('span');sp.className='gz-spacer';tb.appendChild(sp);
     const wb=document.createElement('button');wb.type='button';wb.className='gz-chip';wb.textContent='♥ Wishlist';wb.onclick=()=>{wishOnly=!wishOnly;wb.classList.toggle('on',wishOnly);applyFilters()};tb.appendChild(wb);
@@ -2834,6 +2859,8 @@ loadReviews().then(decorateAll);decorateAll();
   'Remove item':'إزالة العنصر','Switch color theme':'تبديل لون الواجهة','Display currency':'عملة العرض','Open shopping cart':'فتح السلة','Add item to cart':'أضف إلى السلة','Close checkout':'إغلاق','Checkout progress':'تقدّم الطلب','Sort':'ترتيب','Back to top':'للأعلى','Quick navigation':'تنقّل سريع',
   'Enter your email':'أدخل بريدك الإلكتروني','Enter password':'أدخل كلمة المرور','Choose a username':'اختر اسم مستخدم','Create password':'أنشئ كلمة مرور','Enter your full name':'أدخل اسمك الكامل','Enter your age':'أدخل عمرك','Search for games, coins, or items...':'ابحث عن ألعاب أو عملات أو عناصر...',
   'Reviews':'التقييمات','Be the first to review':'كن أول من يقيّم','Your rating':'تقييمك','Share your experience (short comment)':'شاركنا تجربتك (تعليق قصير)','Post review':'نشر التقييم','Update review':'تحديث التقييم','Log in to write a review':'سجّل الدخول لكتابة تقييم','Log in':'تسجيل الدخول','No reviews yet.':'لا توجد تقييمات بعد.','Please choose a star rating.':'اختر عدد النجوم.','Please write a short comment.':'اكتب تعليقًا قصيرًا.','Thanks! Your review was posted.':'شكرًا! تم نشر تقييمك.','Could not save your review. Try again.':'تعذّر حفظ تقييمك. حاول مرة أخرى.','Online reviews are not enabled yet — reviews are saved on this device only.':'التقييمات الأونلاين غير مفعّلة بعد — تُحفظ التقييمات على هذا الجهاز فقط.','Loading reviews…':'جارٍ تحميل التقييمات…','Reviewer':'مشتري','Close':'إغلاق',
+  'Apps & Subscriptions':'التطبيقات والاشتراكات','Apps':'التطبيقات','APP':'تطبيق','✨ More apps will be added soon!':'✨ سنضيف المزيد من التطبيقات قريبًا!','Spotify Premium':'سبوتيفاي بريميوم','Shahid VIP':'شاهد VIP','WhatsApp+':'واتساب+','Snapchat+':'سناب شات+',
+  'Music':'موسيقى','Premium account':'حساب بريميوم','Messaging':'مراسلة','Extra features':'ميزات إضافية','Social':'تواصل اجتماعي','Premium features':'ميزات بريميوم','Series and movies':'مسلسلات وأفلام','VIP access':'وصول VIP','Delivered after your order':'يُسلَّم بعد طلبك',
   /* genres / segments */
   'Open world':'عالم مفتوح','Open World':'عالم مفتوح','Football':'كرة القدم','Basketball':'كرة السلة','Sandbox':'ساندبوكس','Simulation':'محاكاة','Strategy':'استراتيجية','Action RPG':'أكشن وأدوار','FPS':'إطلاق نار FPS','Pre-order':'طلب مسبق',
   'Upgraded visuals and faster loading':'رسوميات محسّنة وتحميل أسرع','Explore Japan in over 550 real-world cars':'استكشف اليابان بأكثر من 550 سيارة حقيقية','Jason and Lucia in Vice City':'جيسون ولوسيا في فايس سيتي','Clubs, Ultimate Team, and The Grounds':'الأندية وألتيميت تيم وذا جراوندز',
