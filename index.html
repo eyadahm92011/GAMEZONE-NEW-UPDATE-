@@ -2638,6 +2638,334 @@ body.light .gz-chip.on{background:#00c26e;color:#fff}
   }
 })();
 </script>
+<style>
+/* ===== top slider ===== */
+.gz-slider{position:relative;width:min(1400px,94%);margin:18px auto 0;border-radius:22px;overflow:hidden;background:#0c0c0c;border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 70px rgba(0,0,0,.5);color:#fff;animation:gzUp .7s both}
+.gzs-stage{position:relative;height:clamp(400px,42vw,560px)}
+.gzs-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .8s ease,visibility .8s;overflow:hidden}
+.gzs-slide.on{opacity:1;visibility:visible}
+.gzs-bg{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;filter:blur(26px) brightness(.5) saturate(1.3);transform:scale(1.05)}
+.gzs-slide.on .gzs-bg{animation:gzsZoom 9s ease-out both}
+@keyframes gzsZoom{from{transform:scale(1.15)}to{transform:scale(1.02)}}
+.gzs-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,8,8,.96) 0%,rgba(8,8,8,.7) 40%,rgba(8,8,8,.1) 100%)}
+html[dir=rtl] .gzs-shade{background:linear-gradient(270deg,rgba(8,8,8,.96) 0%,rgba(8,8,8,.7) 40%,rgba(8,8,8,.1) 100%)}
+.gzs-ghost{position:absolute;inset-inline-end:3%;top:50%;transform:translateY(-50%);font-size:clamp(70px,15vw,210px);font-weight:900;white-space:nowrap;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.07);pointer-events:none;text-transform:uppercase}
+.gzs-copy{position:absolute;inset-inline-start:6%;top:50%;transform:translateY(-50%);max-width:min(460px,44%);z-index:3}
+.gzs-copy>*{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.gzs-slide.on .gzs-copy>*{opacity:1;transform:none}
+.gzs-slide.on .gzs-copy>:nth-child(1){transition-delay:.15s}.gzs-slide.on .gzs-copy>:nth-child(2){transition-delay:.25s}.gzs-slide.on .gzs-copy>:nth-child(3){transition-delay:.35s}.gzs-slide.on .gzs-copy>:nth-child(4){transition-delay:.45s}.gzs-slide.on .gzs-copy>:nth-child(5){transition-delay:.55s}
+.gzs-tag{display:inline-block;padding:6px 14px;border-radius:10px;background:#00ff88;color:#06130d;font:800 13px Arial,sans-serif;letter-spacing:.5px}
+.gzs-kicker{margin:14px 0 8px;color:#00ff88;font:700 13px Arial,sans-serif;letter-spacing:3px}
+.gzs-title{font-size:clamp(28px,4.2vw,56px);line-height:1.05;font-weight:800;margin:0 0 12px;color:#fff}
+.gzs-sub{font-size:clamp(15px,1.5vw,19px);color:#cfcfcf;margin:0 0 22px;line-height:1.5}
+.gzs-btn{display:inline-block;border:0;cursor:pointer;padding:15px 32px;border-radius:14px;background:#00ff88;color:#06130d;font:800 17px Arial,sans-serif;text-decoration:none;transition:transform .25s,box-shadow .25s}
+.gzs-btn:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,255,136,.4)}
+.gzs-art{position:absolute;inset-inline-end:7%;top:50%;width:min(44%,560px);z-index:2;transform:translateY(-50%) translateX(60px) scale(.9) rotate(3deg);opacity:0;transition:transform .9s cubic-bezier(.2,.8,.2,1) .2s,opacity .7s .2s}
+html[dir=rtl] .gzs-art{transform:translateY(-50%) translateX(-60px) scale(.9) rotate(-3deg)}
+.gzs-slide.on .gzs-art{opacity:1;transform:translateY(-50%) rotate(3deg)}
+html[dir=rtl] .gzs-slide.on .gzs-art{transform:translateY(-50%) rotate(-3deg)}
+.gzs-art img{display:block;width:100%;border-radius:16px;box-shadow:0 30px 70px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.15),0 0 60px rgba(0,255,136,.18)}
+.gzs-emoji{display:block;text-align:center;font-size:clamp(120px,18vw,240px);filter:drop-shadow(0 30px 40px rgba(0,0,0,.5));animation:gzFloat 4s ease-in-out infinite}
+.gzs-strip{display:flex;align-items:stretch;background:rgba(0,0,0,.55);border-top:1px solid rgba(255,255,255,.08)}
+.gzs-tabs{display:flex;flex:1;overflow-x:auto;scrollbar-width:none}
+.gzs-tabs::-webkit-scrollbar{display:none}
+.gzs-tab{flex:1 0 150px;position:relative;padding:16px 14px 18px;background:none;border:0;color:#9a9a9a;font:600 13px Arial,sans-serif;text-align:start;cursor:pointer;transition:color .25s,background .25s}
+.gzs-tab span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gzs-tab:hover{color:#fff;background:rgba(255,255,255,.04)}
+.gzs-tab.on{color:#fff}
+.gzs-bar{position:absolute;inset-inline:14px;bottom:8px;height:3px;border-radius:3px;background:rgba(255,255,255,.18);overflow:hidden}
+.gzs-bar b{display:block;height:100%;width:0;background:#00ff88;transform-origin:left}
+html[dir=rtl] .gzs-bar b{transform-origin:right}
+.gzs-tab.done .gzs-bar b{width:100%}
+.gzs-tab.on .gzs-bar b{width:100%;animation:gzsFill 6.5s linear forwards}
+@keyframes gzsFill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.gz-slider.paused .gzs-tab.on .gzs-bar b,.gz-slider.offscreen .gzs-tab.on .gzs-bar b{animation-play-state:paused}
+.gzs-pause{flex:0 0 56px;border:0;border-inline-start:1px solid rgba(255,255,255,.08);background:none;color:#fff;font-size:13px;cursor:pointer;transition:background .2s}
+.gzs-pause:hover{background:rgba(0,255,136,.15)}
+@media(max-width:760px){
+  .gz-slider{width:calc(100% - 20px);margin-top:10px;border-radius:16px}
+  .gzs-stage{height:560px}
+  .gzs-shade{background:linear-gradient(0deg,rgba(8,8,8,.97) 0%,rgba(8,8,8,.75) 45%,rgba(8,8,8,.15) 100%)!important}
+  .gzs-art{inset-inline-end:auto;inset-inline-start:50%;top:26px;width:76%;transform:translateX(-50%) scale(.9);opacity:0}
+  html[dir=rtl] .gzs-art{transform:translateX(50%) scale(.9)}
+  .gzs-slide.on .gzs-art,html[dir=rtl] .gzs-slide.on .gzs-art{transform:translateX(-50%);opacity:1}
+  html[dir=rtl] .gzs-slide.on .gzs-art{transform:translateX(50%)}
+  .gzs-copy{inset-inline-start:20px;inset-inline-end:20px;top:auto;bottom:24px;transform:none;max-width:none}
+  .gzs-ghost{display:none}
+  .gzs-tab{flex-basis:130px}
+}
+
+.gzs-ph{display:flex;flex-direction:column;align-items:center;gap:8px;padding:26px 18px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);text-align:center}.gzs-ph b{font-size:clamp(16px,2vw,24px)}
+.gzs-ph .gzs-emoji{font-size:clamp(70px,9vw,120px)}
+@media (prefers-reduced-motion:reduce){.gzs-bg,.gzs-emoji{animation:none!important}.gzs-copy>*,.gzs-art{transition:none!important}}
+</style>
+<script>
+/* ===== GAMEZONE: top slider ===== */
+(function(){
+  const hero=document.querySelector('.hero');if(!hero)return;
+  const GRADS=['linear-gradient(135deg,#0b3d2e,#0a1a3a)','linear-gradient(135deg,#3a0b2e,#0a1a3a)','linear-gradient(135deg,#3d2a0b,#1a0a3a)','linear-gradient(135deg,#0b2e3d,#1a3a0a)','linear-gradient(135deg,#2e0b3d,#0a3a2e)','linear-gradient(135deg,#00ff88,#00b7ff 55%,#7c3aed)'];
+  function loadImg(img,url,onFail){const id=(url.match(/\/apps\/(\d+)\//)||[])[1];const tries=[url];if(id)tries.push('https://cdn.cloudflare.steamstatic.com/steam/apps/'+id+'/header.jpg','https://cdn.akamai.steamstatic.com/steam/apps/'+id+'/header.jpg');let i=0;img.onerror=()=>{i++;if(i<tries.length)img.src=tries[i];else{img.onerror=null;onFail()}};img.src=tries[0]}
+  const SLIDES=[
+    {key:"Call of Duty Modern Warfare 4",tag:"NEW",kicker:"JUST RELEASED",title:"Call of Duty: Modern Warfare 4",sub:"Out now. Order yours today.",btn:"Buy now"},
+    {key:"Forza Horizon 6",tag:"HOT",kicker:"EXPLORE JAPAN",title:"Forza Horizon 6",sub:"Race through Japan in over 550 real-world cars.",btn:"Buy now"},
+    {key:"Grand Theft Auto VI GTA 6",tag:"PRE-ORDER",kicker:"COMING NOV 19, 2026",title:"Grand Theft Auto VI",sub:"Jason and Lucia in Vice City.",btn:"Pre-order"},
+    {key:"EA SPORTS FC 27 FC 27",tag:"FOOTBALL",kicker:"NEW SEASON",title:"EA SPORTS FC 27",sub:"Build your club and chase Ultimate Team glory.",btn:"Buy now"},
+    {key:"The Blood of Dawnwalker",tag:"DARK FANTASY RPG",kicker:"OPEN WORLD",title:"The Blood of Dawnwalker",sub:"A human by day, vampire by night.",btn:"Buy now"},
+    {href:"passes.html",tag:"DEALS",kicker:"TOP-UPS & SUBSCRIPTIONS",title:"Game Passes & Coins",sub:"Game Pass, PlayStation Plus, Xbox Live, Free Fire, PUBG and Fortnite.",btn:"Shop now",emoji:"🎮",grad:"linear-gradient(135deg,#00ff88,#00b7ff 55%,#7c3aed)"}
+  ];
+  const cardFor=n=>[...document.querySelectorAll('.game-card')].find(c=>c.dataset.name===n);
+  SLIDES.forEach(s=>{const c=s.key&&cardFor(s.key);s.img=c&&c.querySelector('.game-img img')?c.querySelector('.game-img img').src:'';s.card=c});
+  const e=(t,c,x)=>{const n=document.createElement(t);if(c)n.className=c;if(x!=null)n.textContent=x;return n};
+  const sec=e('section','gz-slider');sec.setAttribute('aria-roledescription','carousel');sec.setAttribute('aria-label','Featured');
+  const stage=e('div','gzs-stage'),tabs=e('div','gzs-tabs');
+  const slides=SLIDES.map((s,i)=>{
+    const d=e('div','gzs-slide');d.setAttribute('role','group');
+    d.style.background=s.grad||GRADS[i%GRADS.length];
+    if(s.img){const bg=e('img','gzs-bg');bg.alt='';if(i)bg.loading='lazy';d.append(bg);loadImg(bg,s.img,()=>bg.remove())}
+    d.append(e('div','gzs-shade'),e('div','gzs-ghost',s.tag));
+    const copy=e('div','gzs-copy');
+    copy.append(e('span','gzs-tag',s.tag),e('div','gzs-kicker',s.kicker),e('h2','gzs-title',s.title),e('p','gzs-sub',s.sub));
+    const b=e(s.href?'a':'button','gzs-btn',s.btn);if(s.href)b.href=s.href;else b.type='button';
+    if(!s.href)b.onclick=()=>buy(s);copy.append(b);d.append(copy);
+    const art=e('div','gzs-art');
+    if(s.img){const a=e('img');a.alt=s.title;a.decoding='async';art.append(a);loadImg(a,s.img,()=>{art.textContent='';const ph=e('div','gzs-ph');ph.append(e('span','gzs-emoji',s.emoji||'🎮'),e('b',null,s.title));art.append(ph)})}else art.append(e('span','gzs-emoji',s.emoji||'🎮'));
+    d.append(art);stage.append(d);
+    const t=e('button','gzs-tab');t.type='button';t.append(e('span',null,s.title),(()=>{const bar=e('i','gzs-bar');bar.append(e('b'));return bar})());
+    t.onclick=()=>go(i,true);tabs.append(t);return d;
+  });
+  const pause=e('button','gzs-pause','❚❚');pause.type='button';pause.setAttribute('aria-label','Pause slideshow');
+  const strip=e('div','gzs-strip');strip.append(tabs,pause);sec.append(stage,strip);hero.before(sec);sec.id='home';hero.remove();
+  let cur=0,paused=false;const tabEls=[...tabs.children];
+  function go(i,user){cur=(i+SLIDES.length)%SLIDES.length;
+    slides.forEach((s,k)=>{s.classList.toggle('on',k===cur);s.setAttribute('aria-hidden',k===cur?'false':'true')});
+    tabEls.forEach((t,k)=>{t.classList.remove('on');if(k===cur){void t.offsetWidth;t.classList.add('on')}t.classList.toggle('done',k<cur)});
+    tabEls[cur].scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});}
+  tabs.addEventListener('animationend',ev=>{if(ev.animationName==='gzsFill'&&!paused)go(cur+1)});
+  function setPause(v){paused=v;sec.classList.toggle('paused',paused||hover);pause.textContent=paused?'▶':'❚❚';pause.setAttribute('aria-label',paused?'Play slideshow':'Pause slideshow')}
+  let hover=false;
+  pause.onclick=()=>setPause(!paused);
+  sec.addEventListener('pointerenter',ev=>{if(ev.pointerType==='mouse'){hover=true;sec.classList.add('paused')}});
+  sec.addEventListener('pointerleave',()=>{hover=false;sec.classList.toggle('paused',paused)});
+  let x0=null;stage.addEventListener('pointerdown',ev=>{x0=ev.clientX});
+  stage.addEventListener('pointerup',ev=>{if(x0==null)return;const dx=ev.clientX-x0;x0=null;if(Math.abs(dx)>50){const rtl=document.documentElement.dir==='rtl';go(cur+((dx<0)!==rtl?1:-1),true)}});
+  addEventListener('keydown',ev=>{if(!sec.contains(document.activeElement))return;if(ev.key==='ArrowRight')go(cur+1,true);if(ev.key==='ArrowLeft')go(cur-1,true)});
+  /* stop the timer while the slider is off-screen */
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>es.forEach(o=>sec.classList.toggle('offscreen',!o.isIntersecting))).observe(sec);
+  function buy(s){const c=s.card,btn=c&&c.querySelector('.add-btn');if(!btn){location.hash='#games';return}
+    const cc=document.getElementById('cartCount'),before=parseInt(cc&&cc.textContent)||0;btn.click();
+    setTimeout(()=>{if((parseInt(cc&&cc.textContent)||0)>before)document.getElementById('cartBtn')?.click()},350)}
+  go(0);
+})();
+</script>
+<style>
+/* ===== sale banner ===== */
+.gz-sale{position:relative;z-index:120;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 14px;padding:10px 44px;color:#fff;font:700 14px/1.3 Arial,sans-serif;text-align:center;background:linear-gradient(90deg,#ff3d00,#ff9100,#d500f9,#ff3d00);background-size:200% 100%;animation:gzSaleBg 8s linear infinite;overflow:hidden}
+.gz-sale::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);transform:translateX(-120%);animation:gzSaleShine 3.5s ease-in-out infinite;pointer-events:none}
+@keyframes gzSaleBg{to{background-position:200% 0}}
+@keyframes gzSaleShine{60%,100%{transform:translateX(120%)}}
+.gz-sale-fire{font-size:20px;animation:gzFire .9s ease-in-out infinite alternate}
+@keyframes gzFire{to{transform:scale(1.25) rotate(-8deg)}}
+.gz-sale-time{display:inline-block;min-width:96px;padding:4px 12px;border-radius:8px;background:rgba(0,0,0,.45);font:800 17px/1.2 'Courier New',monospace;letter-spacing:1px;text-shadow:0 0 10px rgba(255,255,255,.6)}
+.gz-sale-time.tick{animation:gzTick .35s ease}
+@keyframes gzTick{40%{transform:translateY(-2px) scale(1.06)}}
+.gz-sale-cta{color:#1b0b00;background:#fff;padding:6px 14px;border-radius:999px;text-decoration:none;font-weight:800;transition:transform .2s,box-shadow .2s}
+.gz-sale-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.gz-sale-x{position:absolute;right:10px;top:50%;transform:translateY(-50%);z-index:2;width:30px;height:30px;border:0;border-radius:50%;background:rgba(0,0,0,.3);color:#fff;font-size:18px;cursor:pointer}
+html[dir=rtl] .gz-sale-x{right:auto;left:10px}
+.gz-sale-chip{position:absolute;right:12px;top:12px;z-index:4;padding:5px 10px;border-radius:999px;background:#ff3d00;color:#fff;font-size:12px;font-weight:800;box-shadow:0 4px 14px rgba(255,61,0,.5);animation:gzPulse 1.6s ease-in-out infinite}
+html[dir=rtl] .gz-sale-chip{right:auto;left:12px}
+.pass-art .gz-sale-chip{top:auto;bottom:12px}
+.game-card:has(.gz-sale-chip) .gz-heart{top:10px}
+@media(max-width:600px){.gz-sale{font-size:12.5px;padding:8px 40px}.gz-sale-time{font-size:15px;min-width:84px}}
+@media (prefers-reduced-motion:reduce){.gz-sale,.gz-sale::after,.gz-sale-fire,.gz-sale-chip{animation:none!important}}
+/* ===== reviews ===== */
+.gz-stars{display:inline-block;letter-spacing:2px;font-size:15px;line-height:1;background:linear-gradient(90deg,#ffc107 var(--p,0%),#555 var(--p,0%));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.gz-stars.lg{font-size:22px}
+.gz-rating{display:inline-flex;align-items:center;gap:4px;margin:2px 0 10px;padding:4px 0;background:none;border:0;color:#bbb;font:600 13px Arial,sans-serif;cursor:pointer;transition:color .2s}
+.gz-rating:hover{color:#00ff88}.gz-rating b{color:#ffc107}.gz-rating small{opacity:.7}
+body.light .gz-rating{color:#555}
+#gzReviews{position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;padding:14px}
+#gzReviews[hidden]{display:none}
+.gzr-back{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(4px);animation:gzFade .25s}
+.gzr-box{position:relative;width:min(560px,100%);max-height:90vh;overflow:auto;background:#111;color:#fff;border:1px solid rgba(0,255,136,.35);border-radius:18px;padding:24px 22px;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:gzRise .35s cubic-bezier(.2,.8,.2,1)}
+body.light .gzr-box{background:#fff;color:#111}
+@keyframes gzFade{from{opacity:0}}@keyframes gzRise{from{opacity:0;transform:translateY(30px) scale(.96)}}
+.gzr-x{position:absolute;top:10px;right:12px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.1);color:inherit;font-size:22px;cursor:pointer}
+html[dir=rtl] .gzr-x{right:auto;left:12px}
+.gzr-title{font-size:20px;margin:0 36px 12px 0}html[dir=rtl] .gzr-title{margin:0 0 12px 36px}
+.gzr-sum{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.gzr-big{font-size:44px;font-weight:800;color:#ffc107;line-height:1}.gzr-count{font-size:13px;opacity:.7;margin-top:4px}
+.gzr-note{font-size:12.5px;padding:8px 10px;border-radius:8px;background:rgba(255,193,7,.12);border:1px solid rgba(255,193,7,.4);margin-bottom:12px}
+.gzr-form,.gzr-login{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px;margin-bottom:16px}
+body.light .gzr-form,body.light .gzr-login{background:#f4f4f4;border-color:#ddd}
+.gzr-login{text-align:center}.gzr-login p{margin-bottom:10px}
+.gzr-label{font-size:13px;opacity:.75;margin-bottom:6px}
+.gzr-pick{display:flex;gap:4px;margin-bottom:10px}
+.gzr-star{background:none;border:0;font-size:32px;line-height:1;color:#555;cursor:pointer;transition:transform .15s,color .15s}
+.gzr-star:hover{transform:scale(1.2)}.gzr-star.on{color:#ffc107;text-shadow:0 0 12px rgba(255,193,7,.6)}
+.gzr-ta{width:100%;resize:vertical;padding:10px 12px;border-radius:10px;border:1px solid #333;background:#0b0b0b;color:#fff;font:14px Arial,sans-serif}
+body.light .gzr-ta{background:#fff;color:#111;border-color:#ccc}
+.gzr-ta:focus{outline:2px solid #00ff88;border-color:transparent}
+.gzr-status{min-height:20px;margin:6px 0;font-size:13px;color:#00ff88}
+.gzr-btn{padding:10px 22px;border:0;border-radius:10px;background:#00ff88;color:#06130d;font:800 14px Arial,sans-serif;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.gzr-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,255,136,.35)}.gzr-btn:disabled{opacity:.5;cursor:wait}
+.gzr-item{padding:12px 0;border-top:1px solid rgba(255,255,255,.1);animation:gzUp .4s both}body.light .gzr-item{border-color:#ddd}
+.gzr-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.gzr-h small{margin-inline-start:auto;opacity:.6}
+.gzr-item p{margin-top:6px;font-size:14px;line-height:1.5;word-break:break-word;opacity:.9}
+.gzr-empty{opacity:.6;text-align:center;padding:14px}
+</style>
+<script>
+/* ===== GAMEZONE: Sale countdown banner =====
+   Edit GZ_SALE to change the sale. Set enabled:false to turn it off.
+   endsAt = when the sale ends (your local time zone is written as +03:00 for Egypt). */
+(function(){
+  const GZ_SALE={
+    enabled:true,
+    match:"Free Fire",                                   // every card whose name starts with this gets the discount
+    label:{en:"Free Fire coins",ar:"عملات فري فاير"},
+    percent:15,
+    endsAt:"2026-11-01T23:59:59+03:00"
+  };
+  if(!GZ_SALE.enabled)return;
+  const end=new Date(GZ_SALE.endsAt).getTime();
+  if(!(end>Date.now()))return;
+  /* real discount on the matching cards (cart + sorting use data-price) */
+  document.querySelectorAll('.game-card').forEach(c=>{
+    if(!(c.dataset.name||'').startsWith(GZ_SALE.match))return;
+    const old=parseFloat(c.dataset.price);if(!(old>0))return;
+    c.dataset.priceOrig=old;c.dataset.price=(Math.round(old*(100-GZ_SALE.percent))/100).toFixed(2);
+    const host=c.querySelector('.pass-art,.game-img');
+    if(host){const chip=document.createElement('span');chip.className='gz-sale-chip';chip.textContent='-'+GZ_SALE.percent+'%';host.appendChild(chip)}
+  });
+  let dismissed=false;try{dismissed=sessionStorage.getItem('gz_sale_x')==='1'}catch(e){}
+  if(dismissed)return;
+  const onPasses=!!document.querySelector('.pass-card');
+  const bar=document.createElement('div');bar.className='gz-sale';bar.setAttribute('role','status');
+  bar.innerHTML='<span class="gz-sale-fire" aria-hidden="true">🔥</span><span class="gz-sale-text"></span><span class="gz-sale-time" dir="ltr"></span>'+(onPasses?'':'<a class="gz-sale-cta" href="passes.html"></a>')+'<button class="gz-sale-x" type="button"></button>';
+  document.body.prepend(bar);
+  const $=s=>bar.querySelector(s),txt=$('.gz-sale-text'),tm=$('.gz-sale-time'),cta=$('.gz-sale-cta'),x=$('.gz-sale-x');
+  x.textContent='×';x.onclick=()=>{bar.remove();try{sessionStorage.setItem('gz_sale_x','1')}catch(e){}};
+  const pad=n=>String(n).padStart(2,'0');let lastS=-1;
+  function tick(){
+    const ar=document.documentElement.lang==='ar',left=end-Date.now();
+    if(left<=0){location.reload();return}
+    const s=Math.floor(left/1000),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),sec=s%60;
+    const t=(d?d+'d ':'')+pad(h)+':'+pad(m)+':'+pad(sec);
+    const a=ar?`خصم ${GZ_SALE.percent}% على ${GZ_SALE.label.ar} — ينتهي خلال`:`${GZ_SALE.label.en} ${GZ_SALE.percent}% OFF — ends in`;
+    if(txt.textContent!==a)txt.textContent=a;
+    if(tm.textContent!==t){tm.textContent=t;tm.classList.remove('tick');void tm.offsetWidth;tm.classList.add('tick')}
+    if(cta){const c=ar?'تسوّق الآن':'Shop now';if(cta.textContent!==c)cta.textContent=c}
+    x.setAttribute('aria-label',ar?'إغلاق':'Dismiss');
+  }
+  tick();setInterval(tick,1000);
+})();
+</script>
+<script type="module">
+/* ===== GAMEZONE: Reviews & ratings (login required to post) ===== */
+import { getApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getFirestore, collection, getDocs, doc, setDoc, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const isAr=()=>document.documentElement.lang==='ar';
+const T=(en,ar)=>isAr()?ar:en;
+const withTimeout=(p,ms)=>Promise.race([p,new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),ms))]);
+const slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+
+/* ---------- auth + storage ---------- */
+let panel=null,curName='',curRating=0;
+let auth=null,db=null,user=null,mode='firestore',reviews=[];   // reviews: {item,uid,name,rating,text,ts}
+try{auth=getAuth(getApp());user=auth.currentUser;onAuthStateChanged(auth,u=>{user=u;if(panel&&!panel.hidden)renderPanel()})}catch(e){}
+try{db=getFirestore(getApp())}catch(e){mode='local'}
+const LKEY='gz_reviews_local';
+const localAll=()=>{try{return JSON.parse(localStorage.getItem(LKEY)||'[]')}catch(e){return[]}};
+async function loadReviews(){
+  if(db){try{
+    const snap=await withTimeout(getDocs(query(collection(db,'reviews'),orderBy('ts','desc'),limit(500))),5000);
+    reviews=snap.docs.map(d=>d.data());mode='firestore';return}catch(e){mode='local'}}
+  mode='local';reviews=localAll();
+}
+async function saveReview(r){
+  if(mode==='firestore'&&db){try{await withTimeout(setDoc(doc(db,'reviews',r.item+'__'+r.uid),r),6000);
+    reviews=reviews.filter(x=>!(x.item===r.item&&x.uid===r.uid));reviews.unshift(r);return}catch(e){mode='local';reviews=localAll()}}
+  const all=localAll().filter(x=>!(x.item===r.item&&x.uid===r.uid));all.unshift(r);
+  try{localStorage.setItem(LKEY,JSON.stringify(all))}catch(e){}
+  reviews=all;
+}
+const forItem=k=>reviews.filter(r=>r.item===k).sort((a,b)=>b.ts-a.ts);
+const avg=l=>l.length?l.reduce((s,r)=>s+r.rating,0)/l.length:0;
+
+/* ---------- card summary ---------- */
+function starsEl(v){const s=document.createElement('span');s.className='gz-stars';s.style.setProperty('--p',Math.max(0,Math.min(100,v/5*100))+'%');s.textContent='★★★★★';s.setAttribute('aria-hidden','true');return s}
+function decorate(card){
+  const k=slug(card.dataset.name);let btn=card.querySelector('.gz-rating');
+  if(!btn){btn=document.createElement('button');btn.type='button';btn.className='gz-rating';btn.dataset.k=k;
+    btn.addEventListener('click',e=>{e.stopPropagation();openPanel(card.dataset.name)});
+    const info=card.querySelector('.game-info'),bottom=card.querySelector('.game-bottom');if(info&&bottom&&bottom.parentNode===info)info.insertBefore(btn,bottom);else (info||card).appendChild(btn)}
+  const l=forItem(k);btn.textContent='';
+  if(!l.length){const a=document.createElement('span');a.textContent='Be the first to review';btn.append(starsEl(0),' ',a)}
+  else{const n=document.createElement('b');n.textContent=avg(l).toFixed(1);const c=document.createElement('small');c.textContent='('+l.length+')';btn.append(starsEl(avg(l)),' ',n,' ',c)}
+  btn.setAttribute('aria-label',card.dataset.name+' — reviews');
+}
+const decorateAll=()=>$$('.game-card').forEach(decorate);
+
+/* ---------- panel ---------- */
+function build(){
+  panel=document.createElement('div');panel.id='gzReviews';panel.hidden=true;panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');
+  panel.innerHTML='<div class="gzr-back"></div><div class="gzr-box"><button class="gzr-x" type="button" aria-label="Close">×</button><div class="gzr-body"></div></div>';
+  document.body.appendChild(panel);
+  panel.querySelector('.gzr-back').onclick=closePanel;panel.querySelector('.gzr-x').onclick=closePanel;
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)closePanel()});
+}
+function closePanel(){panel.hidden=true;document.body.style.overflow=''}
+async function openPanel(name){
+  if(!panel)build();curName=name;curRating=0;panel.hidden=false;document.body.style.overflow='hidden';
+  panel.querySelector('.gzr-body').textContent='Loading reviews…';
+  await loadReviews();decorateAll();renderPanel();
+}
+function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function renderPanel(){
+  const b=panel.querySelector('.gzr-body');b.textContent='';const k=slug(curName),l=forItem(k),a=avg(l);
+  b.append(el('h3','gzr-title',curName));
+  const sum=el('div','gzr-sum');sum.append(el('div','gzr-big',l.length?a.toFixed(1):'–'),(()=>{const w=el('div');const s=starsEl(a);s.classList.add('lg');w.append(s,el('div','gzr-count',l.length+(l.length===1?' review':' reviews')));return w})());b.append(sum);
+  if(mode==='local')b.append(el('p','gzr-note','Online reviews are not enabled yet — reviews are saved on this device only.'));
+  /* form or login prompt */
+  const mine=user?l.find(r=>r.uid===user.uid):null;
+  if(!user){
+    const box=el('div','gzr-login');box.append(el('p',null,'Log in to write a review'));
+    const lb=el('button','gzr-btn','Log in');lb.type='button';lb.onclick=()=>{closePanel();$('#accountNavBtn')?.click()};box.append(lb);b.append(box);
+  }else{
+    const f=el('form','gzr-form');f.append(el('div','gzr-label','Your rating'));
+    const row=el('div','gzr-pick');curRating=mine?mine.rating:curRating;
+    for(let i=1;i<=5;i++){const s=el('button','gzr-star','★');s.type='button';s.setAttribute('aria-label',i+' / 5');s.onclick=()=>{curRating=i;paint()};row.append(s)}
+    const paint=()=>[...row.children].forEach((s,i)=>s.classList.toggle('on',i<curRating));paint();f.append(row);
+    const ta=el('textarea','gzr-ta');ta.maxLength=200;ta.rows=3;ta.placeholder='Share your experience (short comment)';ta.value=mine?mine.text:'';f.append(ta);
+    const st=el('div','gzr-status');f.append(st);
+    const sb=el('button','gzr-btn',mine?'Update review':'Post review');sb.type='submit';f.append(sb);
+    f.onsubmit=async e=>{e.preventDefault();
+      if(!user){return}
+      if(!curRating){st.textContent='Please choose a star rating.';return}
+      const text=ta.value.trim();if(!text){st.textContent='Please write a short comment.';return}
+      sb.disabled=true;
+      const nm=(user.displayName||(user.email||'').split('@')[0]||'Reviewer').slice(0,24);
+      try{await saveReview({item:k,uid:user.uid,name:nm,rating:curRating,text:text.slice(0,200),ts:Date.now()});decorateAll();renderPanel();
+        const s2=panel.querySelector('.gzr-status');if(s2)s2.textContent='Thanks! Your review was posted.'}
+      catch(err){st.textContent='Could not save your review. Try again.';sb.disabled=false}
+    };
+    b.append(f);
+  }
+  /* list */
+  const list=el('div','gzr-list');
+  if(!l.length)list.append(el('p','gzr-empty','No reviews yet.'));
+  l.slice(0,40).forEach(r=>{const it=el('div','gzr-item');const h=el('div','gzr-h');h.append(el('b',null,r.name||'Reviewer'),starsEl(r.rating),el('small',null,new Date(r.ts).toLocaleDateString(isAr()?'ar-EG':'en-GB')));
+    it.append(h,el('p',null,r.text));list.append(it)});
+  b.append(list);
+}
+/* keep stars text language-correct when counts change */
+new MutationObserver(()=>{if(panel&&!panel.hidden)return}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+
+loadReviews().then(decorateAll);decorateAll();
+</script>
 <script>
 /* ===== GAMEZONE: Arabic / English ===== */
 (function(){
@@ -2678,6 +3006,10 @@ body.light .gz-chip.on{background:#00c26e;color:#fff}
   'Too many verification emails were requested. Please wait and try again later.':'تم طلب رسائل تحقق كثيرة. يرجى الانتظار والمحاولة لاحقًا.','Could not reach Firebase. Check your internet connection and reload GAMEZONE.':'تعذّر الاتصال بـ Firebase. تحقق من الإنترنت وأعد تحميل الصفحة.',
   'Remove item':'إزالة العنصر','Switch color theme':'تبديل لون الواجهة','Display currency':'عملة العرض','Open shopping cart':'فتح السلة','Add item to cart':'أضف إلى السلة','Close checkout':'إغلاق','Checkout progress':'تقدّم الطلب','Sort':'ترتيب','Back to top':'للأعلى','Quick navigation':'تنقّل سريع',
   'Enter your email':'أدخل بريدك الإلكتروني','Enter password':'أدخل كلمة المرور','Choose a username':'اختر اسم مستخدم','Create password':'أنشئ كلمة مرور','Enter your full name':'أدخل اسمك الكامل','Enter your age':'أدخل عمرك','Search for games, coins, or items...':'ابحث عن ألعاب أو عملات أو عناصر...',
+  'Reviews':'التقييمات','Be the first to review':'كن أول من يقيّم','Your rating':'تقييمك','Share your experience (short comment)':'شاركنا تجربتك (تعليق قصير)','Post review':'نشر التقييم','Update review':'تحديث التقييم','Log in to write a review':'سجّل الدخول لكتابة تقييم','Log in':'تسجيل الدخول','No reviews yet.':'لا توجد تقييمات بعد.','Please choose a star rating.':'اختر عدد النجوم.','Please write a short comment.':'اكتب تعليقًا قصيرًا.','Thanks! Your review was posted.':'شكرًا! تم نشر تقييمك.','Could not save your review. Try again.':'تعذّر حفظ تقييمك. حاول مرة أخرى.','Online reviews are not enabled yet — reviews are saved on this device only.':'التقييمات الأونلاين غير مفعّلة بعد — تُحفظ التقييمات على هذا الجهاز فقط.','Loading reviews…':'جارٍ تحميل التقييمات…','Reviewer':'مشتري','Close':'إغلاق',
+  'NEW':'جديد','JUST RELEASED':'صدر للتو','Out now. Order yours today.':'متاح الآن. اطلب نسختك اليوم.','Buy now':'اشترِ الآن','Shop now':'تسوّق الآن','HOT':'رائج','EXPLORE JAPAN':'استكشف اليابان','Race through Japan in over 550 real-world cars.':'تسابق عبر اليابان بأكثر من 550 سيارة حقيقية.',
+  'PRE-ORDER':'طلب مسبق','Jason and Lucia in Vice City.':'جيسون ولوسيا في فايس سيتي.','NEW SEASON':'موسم جديد','Build your club and chase Ultimate Team glory.':'ابنِ ناديك وطارد مجد ألتيميت تيم.','OPEN WORLD':'عالم مفتوح','A human by day, vampire by night.':'إنسان في النهار، مصاص دماء في الليل.',
+  'DEALS':'عروض','TOP-UPS & SUBSCRIPTIONS':'شحن واشتراكات','Game Pass, PlayStation Plus, Xbox Live, Free Fire, PUBG and Fortnite.':'جيم باس وبلايستيشن بلس وإكس بوكس لايف وفري فاير وببجي وفورتنايت.','Pause slideshow':'إيقاف العرض','Play slideshow':'تشغيل العرض','Featured':'مميز',
   /* genres / segments */
   'Open world':'عالم مفتوح','Open World':'عالم مفتوح','Football':'كرة القدم','Basketball':'كرة السلة','Sandbox':'ساندبوكس','Simulation':'محاكاة','Strategy':'استراتيجية','Action RPG':'أكشن وأدوار','FPS':'إطلاق نار FPS','Pre-order':'طلب مسبق',
   'Upgraded visuals and faster loading':'رسوميات محسّنة وتحميل أسرع','Explore Japan in over 550 real-world cars':'استكشف اليابان بأكثر من 550 سيارة حقيقية','Jason and Lucia in Vice City':'جيسون ولوسيا في فايس سيتي','Clubs, Ultimate Team, and The Grounds':'الأندية وألتيميت تيم وذا جراوندز',
@@ -2687,6 +3019,7 @@ body.light .gz-chip.on{background:#00c26e;color:#fff}
   'Free Fire':'فري فاير','PUBG Mobile':'ببجي موبايل','Fortnite':'فورتنايت','Delivered to your player ID':'يُسلَّم إلى معرّف اللاعب (ID)','Delivered to your account':'يُسلَّم إلى حسابك'
   };
   const P=[
+   [/^(\d+) reviews?$/,m=>`${m[1]} تقييم`],
    [/^Free Fire ([\d,]+) Coins$/,m=>`فري فاير ${m[1]} عملة`],[/^PUBG ([\d,]+) UC$/,m=>`ببجي ${m[1]} UC`],[/^Fortnite ([\d,]+) V-Bucks$/,m=>`فورتنايت ${m[1]} V-Bucks`],
    [/^([\d,]+) coins$/,m=>`${m[1]} عملة`],[/^([\d,]+) UC$/,m=>`${m[1]} UC`],[/^([\d,]+) V-Bucks$/,m=>`${m[1]} V-Bucks`],
    [/^([\d,]+\+?) pts: (\d+)% off$/,m=>`${m[1]} نقطة: خصم ${m[2]}%`],[/^(\d+)% OFF$/,m=>`خصم ${m[1]}%`],
