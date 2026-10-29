@@ -2638,5 +2638,139 @@ body.light .gz-chip.on{background:#00c26e;color:#fff}
   }
 })();
 </script>
+<script>
+/* ===== GAMEZONE: Arabic / English ===== */
+(function(){
+  const KEY='gz_lang';
+  const D={
+  'GAMEZONE | Find Your Next Game':'جيمزون | اعثر على لعبتك القادمة','GAMEZONE | Game Passes & Coins':'جيمزون | اشتراكات وعملات الألعاب',
+  'Home':'الرئيسية','Games':'الألعاب','GAMES':'الألعاب','Passes & Coins':'الاشتراكات والعملات','About':'من نحن','Passes':'الاشتراكات','Cart':'السلة','Account':'الحساب',
+  'Currency':'العملة','My Account':'حسابي','Login':'تسجيل الدخول','Register':'إنشاء حساب','Email':'البريد الإلكتروني','Password':'كلمة المرور','Log In':'دخول','Username':'اسم المستخدم','Create Account':'إنشاء حساب','OR':'أو',
+  'Continue with Google':'المتابعة عبر Google','Continue with GitHub':'المتابعة عبر GitHub','User':'مستخدم','Orders':'الطلبات','Points':'النقاط','Log Out':'تسجيل الخروج','Social Login':'تسجيل اجتماعي',
+  'Your Cart':'سلة المشتريات','Your cart is empty.':'سلتك فارغة.','Total:':'الإجمالي:','Proceed to Checkout':'إتمام الشراء',
+  'EMAIL VERIFICATION · WHATSAPP ORDER':'التحقق بالبريد · الطلب عبر واتساب','Complete your order':'أكمل طلبك','1. Email':'١. البريد','2. Your details':'٢. بياناتك','3. WhatsApp':'٣. واتساب',
+  'Send an email':'أرسل رسالة بريد','We’ll email a one-time six-digit code to your GAMEZONE account address.':'سنرسل رمزًا مكوّنًا من ستة أرقام إلى بريد حسابك في جيمزون.',
+  'GAMEZONE account email':'بريد حساب جيمزون','Send verification code':'إرسال رمز التحقق','Verify email and add your details':'تحقق من بريدك وأضف بياناتك',
+  'Enter the six-digit code, your full name, and your age. You must be 15 or older to continue.':'أدخل الرمز المكوّن من ستة أرقام واسمك الكامل وعمرك. يجب أن يكون عمرك 15 عامًا أو أكثر للمتابعة.',
+  'Email code':'رمز البريد','Full name':'الاسم الكامل','Age (15+)':'العمر (15+)','Verify code and continue':'تحقق من الرمز وتابع','Resend code':'إعادة إرسال الرمز',
+  'Send your order':'أرسل طلبك','Your email, name, age, and order summary will be prefilled in WhatsApp. Review the message before sending.':'سيتم تعبئة بريدك واسمك وعمرك وملخص طلبك في واتساب. راجع الرسالة قبل الإرسال.',
+  'Go to WhatsApp':'الذهاب إلى واتساب','WhatsApp opens with your order prefilled. Review it and press Send to contact GAMEZONE.':'سيفتح واتساب وطلبك مكتوب مسبقًا. راجعه واضغط إرسال للتواصل مع جيمزون.',
+  'WELCOME TO':'مرحبًا بك في','Discover amazing games, explore new worlds, and find your next favorite adventure.':'اكتشف ألعابًا رائعة، واستكشف عوالم جديدة، واعثر على مغامرتك المفضلة القادمة.',
+  'EXPLORE GAMES':'تصفّح الألعاب','PLAY MINI GAME':'العب لعبة صغيرة','PASSES & COINS':'الاشتراكات والعملات','POPULAR CATEGORIES':'أقسام شائعة',
+  'GTA V Coins & Items':'عملات وعناصر GTA V','EA Sports FC Coins':'عملات EA Sports FC','Minecraft Items & Coins':'عناصر وعملات Minecraft','Forza Horizon Cars':'سيارات Forza Horizon','Call of Duty Points':'نقاط Call of Duty',
+  'All':'الكل','Action':'أكشن','Racing':'سباقات','Sports':'رياضة','Adventure':'مغامرة','Popular Games':'ألعاب شائعة','GAMEZONE OFFERS':'عروض جيمزون',
+  'ENHANCED':'نسخة محسّنة','GAMEZONE PICK':'اختيار جيمزون','JAPAN AWAITS':'اليابان في انتظارك','COMING NOV 19, 2026':'قريبًا 19 نوفمبر 2026','FOOTBALL':'كرة القدم','BASKETBALL':'كرة السلة','NEW RELEASE':'إصدار جديد',
+  'DARK FANTASY RPG':'لعبة أدوار فانتازيا مظلمة','BE GREATER. TOGETHER.':'كونوا أعظم. معًا.','NIGHT CITY':'نايت سيتي','BUILT FOR MOTORSPORT':'صُنعت لرياضة المحركات','BUILD YOUR EMPIRE':'ابنِ إمبراطوريتك',
+  'Game Passes & Coins':'اشتراكات وعملات الألعاب','Game Pass, PlayStation Plus, Xbox Live and Free Fire coins.':'جيم باس وبلايستيشن بلس وإكس بوكس لايف وعملات فري فاير.','BROWSE PASSES & COINS':'تصفّح الاشتراكات والعملات',
+  'PLAY FOR FREE':'العب مجانًا','Neon Dodger':'مراوغ النيون','Every 50 score earns 10 account points. Save points toward GAMEZONE offers.':'كل 50 نقطة تمنحك 10 نقاط في حسابك. اجمع النقاط للحصول على عروض جيمزون.',
+  'MODE':'الوضع','Medium':'متوسط','Hard':'صعب','SCORE':'النتيجة','BEST':'الأفضل','Start Game':'ابدأ اللعبة','Restart':'إعادة','Play Again':'العب مرة أخرى',
+  'Press Start, then move with ← → or A / D. On touch screens, drag on the game.':'اضغط ابدأ ثم تحرّك بالأسهم ← → أو A / D. على شاشات اللمس اسحب فوق اللعبة.',
+  'Your ultimate gaming destination.':'وجهتك الأولى للألعاب.','© 2026 GAMEZONE. All rights reserved.':'© 2026 جيمزون. جميع الحقوق محفوظة.',
+  '← Back to Menu':'→ العودة إلى القائمة','Game Passes':'الاشتراكات','SUBSCRIPTION':'اشتراك','TOP-UP':'شحن','Game Pass':'جيم باس','PlayStation Plus':'بلايستيشن بلس','Xbox Live':'إكس بوكس لايف',
+  'Free Fire Coins':'عملات فري فاير','PUBG Mobile UC':'شدّات ببجي موبايل (UC)','PUBG UC':'شدّات ببجي (UC)','Fortnite V-Bucks':'في-باكس فورتنايت','POPULAR':'الأكثر طلبًا','Free':'مجاني',
+  'Sort: Featured':'الترتيب: المميز','Price: Low → High':'السعر: من الأقل للأعلى','Price: High → Low':'السعر: من الأعلى للأقل','Name: A → Z':'الاسم: أ → ي','♥ Wishlist':'♥ المفضلة',
+  '🛒 Added to cart':'🛒 تمت الإضافة إلى السلة','♥ Saved to wishlist':'♥ تمت الإضافة إلى المفضلة','Removed from wishlist':'تمت الإزالة من المفضلة','No wishlist items here yet — tap the ♡ on any card.':'لا توجد عناصر مفضلة هنا بعد — اضغط ♡ على أي بطاقة.',
+  'No games match your search. Try another title or category.':'لا توجد ألعاب مطابقة لبحثك. جرّب اسمًا أو قسمًا آخر.','Earn 500 points to unlock your first offer.':'اجمع 500 نقطة لفتح أول عرض لك.','Sign in to unlock account-point offers.':'سجّل الدخول لفتح عروض النقاط.',
+  'Send verification code':'إرسال رمز التحقق','Your cart is empty. Add a game before checkout.':'سلتك فارغة. أضف لعبة قبل إتمام الشراء.','LOGIN FIRST to add games to your cart.':'سجّل الدخول أولًا لإضافة الألعاب إلى سلتك.',
+  'Sign in or create a GAMEZONE account before verifying your email.':'سجّل الدخول أو أنشئ حساب جيمزون قبل التحقق من بريدك.','Sign in or create a GAMEZONE account before sending the code.':'سجّل الدخول أو أنشئ حساب جيمزون قبل إرسال الرمز.',
+  'Enter your full name to continue.':'أدخل اسمك الكامل للمتابعة.','Enter a valid age between 1 and 120.':'أدخل عمرًا صحيحًا بين 1 و120.','Checkout canceled. You must be at least 15 years old to place an order.':'تم إلغاء الطلب. يجب ألا يقل عمرك عن 15 عامًا لإتمام الطلب.',
+  'Your code expired. Send a new code to continue.':'انتهت صلاحية الرمز. أرسل رمزًا جديدًا للمتابعة.','Too many incorrect attempts. Send a new code to continue.':'محاولات خاطئة كثيرة. أرسل رمزًا جديدًا للمتابعة.','Your details are ready. Continue to WhatsApp to send your order.':'بياناتك جاهزة. تابع إلى واتساب لإرسال طلبك.',
+  'Too many verification emails were requested. Please wait and try again later.':'تم طلب رسائل تحقق كثيرة. يرجى الانتظار والمحاولة لاحقًا.','Could not reach Firebase. Check your internet connection and reload GAMEZONE.':'تعذّر الاتصال بـ Firebase. تحقق من الإنترنت وأعد تحميل الصفحة.',
+  'Remove item':'إزالة العنصر','Switch color theme':'تبديل لون الواجهة','Display currency':'عملة العرض','Open shopping cart':'فتح السلة','Add item to cart':'أضف إلى السلة','Close checkout':'إغلاق','Checkout progress':'تقدّم الطلب','Sort':'ترتيب','Back to top':'للأعلى','Quick navigation':'تنقّل سريع',
+  'Enter your email':'أدخل بريدك الإلكتروني','Enter password':'أدخل كلمة المرور','Choose a username':'اختر اسم مستخدم','Create password':'أنشئ كلمة مرور','Enter your full name':'أدخل اسمك الكامل','Enter your age':'أدخل عمرك','Search for games, coins, or items...':'ابحث عن ألعاب أو عملات أو عناصر...',
+  /* genres / segments */
+  'Open world':'عالم مفتوح','Open World':'عالم مفتوح','Football':'كرة القدم','Basketball':'كرة السلة','Sandbox':'ساندبوكس','Simulation':'محاكاة','Strategy':'استراتيجية','Action RPG':'أكشن وأدوار','FPS':'إطلاق نار FPS','Pre-order':'طلب مسبق',
+  'Upgraded visuals and faster loading':'رسوميات محسّنة وتحميل أسرع','Explore Japan in over 550 real-world cars':'استكشف اليابان بأكثر من 550 سيارة حقيقية','Jason and Lucia in Vice City':'جيسون ولوسيا في فايس سيتي','Clubs, Ultimate Team, and The Grounds':'الأندية وألتيميت تيم وذا جراوندز',
+  'Campaign, multiplayer, and co-op':'القصة واللعب الجماعي والتعاوني','A human by day, vampire by night':'إنسان في النهار، مصاص دماء في الليل','Play as Peter Parker and Miles Morales':'العب بدور بيتر باركر ومايلز موراليس','Become V and make your name in Night City':'كن V واصنع اسمك في نايت سيتي',
+  'Build your car and race on world-famous tracks':'ابنِ سيارتك وتسابق على حلبات عالمية شهيرة','Build a criminal empire with friends':'ابنِ إمبراطورية إجرامية مع أصدقائك',
+  'Xbox Game Pass':'إكس بوكس جيم باس','Hundreds of games':'مئات الألعاب','1 month':'شهر واحد','Online play and monthly games':'لعب أونلاين وألعاب شهرية','Xbox Live Gold':'إكس بوكس لايف جولد','Online multiplayer':'لعب جماعي أونلاين',
+  'Free Fire':'فري فاير','PUBG Mobile':'ببجي موبايل','Fortnite':'فورتنايت','Delivered to your player ID':'يُسلَّم إلى معرّف اللاعب (ID)','Delivered to your account':'يُسلَّم إلى حسابك'
+  };
+  const P=[
+   [/^Free Fire ([\d,]+) Coins$/,m=>`فري فاير ${m[1]} عملة`],[/^PUBG ([\d,]+) UC$/,m=>`ببجي ${m[1]} UC`],[/^Fortnite ([\d,]+) V-Bucks$/,m=>`فورتنايت ${m[1]} V-Bucks`],
+   [/^([\d,]+) coins$/,m=>`${m[1]} عملة`],[/^([\d,]+) UC$/,m=>`${m[1]} UC`],[/^([\d,]+) V-Bucks$/,m=>`${m[1]} V-Bucks`],
+   [/^([\d,]+\+?) pts: (\d+)% off$/,m=>`${m[1]} نقطة: خصم ${m[2]}%`],[/^(\d+)% OFF$/,m=>`خصم ${m[1]}%`],
+   [/^(\d+) items? in your order(.*)$/s,m=>`${m[1]} ${m[1]==1?'عنصر':'عناصر'} في طلبك`+(m[2]?` · ${m[2].replace(/^[\s·]+/,'')}`:'')],
+   [/^(\d+)% off all games · ([\d,]+) points will be used when you continue to WhatsApp\.$/,m=>`خصم ${m[1]}% على كل الألعاب · سيتم استخدام ${m[2]} نقطة عند المتابعة إلى واتساب.`],
+   [/^(.+) · (\d+)% off$/,m=>`${m[1]} · خصم ${m[2]}%`],
+   [/^Mode: (\w+)\. Every 50 score earns 10 account points\.$/,m=>`الوضع: ${tr(m[1])}. كل 50 نقطة تمنحك 10 نقاط في حسابك.`],
+   [/^You scored (\d+) in (\w+)\. Try again and beat your best!$/,m=>`حصلت على ${m[1]} في الوضع ${tr(m[2])}. جرّب مجددًا وحطّم رقمك القياسي!`],
+   [/^Code sent to (.+)\. It expires in 10 minutes\.$/,m=>`تم إرسال الرمز إلى ${m[1]}. تنتهي صلاحيته خلال 10 دقائق.`],
+   [/^Please wait (\d+) seconds before requesting another code\.$/,m=>`يرجى الانتظار ${m[1]} ثانية قبل طلب رمز آخر.`],
+   [/^That code is incorrect\. (\d+) attempts? remaining\.$/,m=>`الرمز غير صحيح. المحاولات المتبقية: ${m[1]}.`]
+  ];
+  function seg(s){ if(D[s])return D[s]; for(const [r,f] of P){const m=s.match(r);if(m)return f(m)} return null }
+  function tr(s){
+    const t=s.trim().replace(/\s+/g,' '); if(!t)return null;
+    const raw=s.trim();
+    let r=seg(t); if(r)return s.replace(raw,r);
+    if(t.includes(' • ')){const parts=t.split(' • ');let any=false;const out=parts.map(p=>{const x=seg(p);if(x){any=true;return x}return p});if(any)return s.replace(raw,out.join(' • '))}
+    return null;
+  }
+  let lang=(function(){try{return localStorage.getItem(KEY)==='ar'?'ar':'en'}catch(e){return 'en'}})();
+  const store=new WeakMap();            // node -> {en, ar}
+  const ATTRS=['placeholder','aria-label','title'];
+  function doText(n){
+    if(n.parentNode&&/^(SCRIPT|STYLE|TEXTAREA)$/.test(n.parentNode.nodeName))return;
+    const rec=store.get(n);
+    if(lang==='ar'){
+      if(rec&&n.data===rec.ar)return;                // already translated, untouched
+      const a=tr(n.data); if(a!==null&&a!==n.data){store.set(n,{en:n.data,ar:a});n.data=a}
+    } else if(rec&&n.data===rec.ar){n.data=rec.en;store.delete(n)}
+  }
+  function doEl(e){
+    if(e.nodeType!==1)return;
+    for(const k of ATTRS){ if(!e.hasAttribute(k))continue;
+      const key='__gz_'+k, cur=e.getAttribute(k), rec=e[key];
+      if(lang==='ar'){ if(rec&&cur===rec.ar)continue; const a=tr(cur); if(a!==null&&a!==cur){e[key]={en:cur,ar:a};e.setAttribute(k,a)} }
+      else if(rec&&cur===rec.ar){e.setAttribute(k,rec.en);e[key]=null}
+    }
+  }
+  function walk(root){
+    if(root.nodeType===3){doText(root);return}
+    if(root.nodeType!==1&&root.nodeType!==9)return;
+    if(root.nodeType===1)doEl(root);
+    const w=document.createTreeWalker(root,NodeFilter.SHOW_ELEMENT|NodeFilter.SHOW_TEXT);let n;
+    while((n=w.nextNode())){ n.nodeType===3?doText(n):doEl(n) }
+  }
+  let busy=false;
+  const mo=new MutationObserver(ms=>{ if(busy)return; busy=true;
+    try{ for(const m of ms){ if(m.type==='characterData')doText(m.target); else if(m.type==='attributes')doEl(m.target); else m.addedNodes.forEach(n=>walk(n)) } }finally{ setTimeout(()=>busy=false,0) } });
+  function titleSet(){ const t=document.querySelector('title'); if(t){const n=t.firstChild; if(n)doText(n)} }
+  function apply(){
+    const h=document.documentElement;h.lang=lang;h.dir=lang==='ar'?'rtl':'ltr';
+    walk(document.body);titleSet();
+    const b=document.getElementById('gzLang'); if(b){b.textContent=lang==='ar'?'EN':'عربي';b.setAttribute('aria-label',lang==='ar'?'English':'العربية')}
+  }
+  function setLang(l){lang=l;try{localStorage.setItem(KEY,l)}catch(e){};apply()}
+  /* alerts */
+  const _alert=window.alert.bind(window);window.alert=m=>_alert(lang==='ar'?(tr(String(m).replace(/\n/g,' '))||m):m);
+  /* font for Arabic */
+  const f=document.createElement('link');f.rel='stylesheet';f.href='https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap';document.head.appendChild(f);
+  const st=document.createElement('style');st.textContent=`
+  html[lang=ar] body,html[lang=ar] button,html[lang=ar] input,html[lang=ar] select,html[lang=ar] textarea{font-family:'Cairo',Arial,sans-serif}
+  html[lang=ar] .logo,html[lang=ar] .hero h1{direction:ltr;unicode-bidi:isolate}
+  html[lang=ar] .gz-heart{right:auto;left:10px}
+  html[lang=ar] .gz-badge{left:auto;right:12px}
+  html[lang=ar] .search-icon{right:auto;left:20px}
+  html[lang=ar] .search-input-container input{padding-right:20px;padding-left:56px}
+  html[lang=ar] .pass-art .cover-tag,html[lang=ar] .game-img.cover .cover-tag{left:auto;right:13px}
+  html[lang=ar] .gz-toolbar,html[lang=ar] .category-buttons{direction:rtl}
+  html[lang=ar] .gz-select{padding-left:10px}
+  html[lang=ar] #gzTop{right:auto;left:18px}
+  html[lang=ar] #gzToasts{right:auto;left:18px}
+  html[lang=ar] .gz-toast{border-left:1px solid rgba(0,255,136,.5);border-right:4px solid #00ff88}
+  html[lang=ar] .gz-select{background-position:left}
+  #gzLang{font-weight:700;min-width:48px}
+  @media(max-width:900px){html[lang=ar] #gzToasts{left:14px}}
+  @media(max-width:600px){header{padding:0 12px!important}.nav-right{gap:3px!important}.nav-right button{padding:8px 7px!important;font-size:13px}#gzLang{min-width:0!important;padding:8px 6px!important}.currency-setting select{padding:7px 4px!important;font-size:12px!important}.logo{font-size:17px!important}}`;
+  document.head.appendChild(st);
+  /* language button */
+  const nr=document.querySelector('.nav-right');
+  if(nr){const b=document.createElement('button');b.id='gzLang';b.type='button';b.onclick=()=>setLang(lang==='ar'?'en':'ar');nr.insertBefore(b,nr.firstChild)}
+  mo.observe(document.documentElement,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:ATTRS});
+  apply();
+})();
+</script>
 </body>
 </html>
