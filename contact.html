@@ -186,71 +186,6 @@
         </section>
     </div>
 
-    <!-- SEARCH OVERLAY & POPUP -->
-    <div class="search-backdrop" id="searchBackdrop"></div>
-    <section class="search-section">
-        <div class="search-box-wrapper">
-            <div class="search-input-container">
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search for games, coins, or items..."
-                    autocomplete="off"
-                >
-                <span class="search-icon">🔍</span>
-            </div>
-
-            <!-- POPULAR / QUICK SEARCH DROPDOWN MENU -->
-            <div class="search-dropdown" id="searchDropdown">
-                <div class="search-dropdown-header">POPULAR CATEGORIES</div>
-                <ul class="dropdown-list" id="dropdownList">
-                    <li class="dropdown-item" data-search="Subway Surfers">
-                        <span class="item-badge surfers-badge">🏃</span>
-                        <div class="item-info">
-                            <span class="item-name">Subway Surfers</span>
-                        </div>
-                    </li>
-                    <li class="dropdown-item" data-search="Grand Theft Auto V">
-                        <span class="item-badge gta-badge">🚘</span>
-                        <div class="item-info">
-                            <span class="item-name">GTA V Coins & Items</span>
-                        </div>
-                    </li>
-                    <li class="dropdown-item" data-search="Red Dead Redemption 2">
-                        <span class="item-badge rdr-badge">🤠</span>
-                        <div class="item-info">
-                            <span class="item-name">Red Dead Redemption 2</span>
-                        </div>
-                    </li>
-                    <li class="dropdown-item" data-search="FC 26">
-                        <span class="item-badge fc-badge">⚽</span>
-                        <div class="item-info">
-                            <span class="item-name">EA Sports FC Coins</span>
-                        </div>
-                    </li>
-                    <li class="dropdown-item" data-search="Minecraft">
-                        <span class="item-badge minecraft-badge">⛏️</span>
-                        <div class="item-info">
-                            <span class="item-name">Minecraft Items & Coins</span>
-                        </div>
-                    </li>
-                    <li class="dropdown-item" data-search="Forza Horizon 5">
-                        <span class="item-badge forza-badge">🏎️</span>
-                        <div class="item-info">
-                            <span class="item-name">Forza Horizon Cars</span>
-                        </div>
-                    </li>
-                    <li class="dropdown-item" data-search="Call of Duty">
-                        <span class="item-badge cod-badge">💥</span>
-                        <div class="item-info">
-                            <span class="item-name">Call of Duty Points</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
     <!-- CONTACT US -->
     <section class="gz-contact" id="contact" aria-labelledby="gzContactTitle">
         <a href="index.html" class="hero-btn back-btn">← Back to Menu</a>
@@ -1634,9 +1569,9 @@
         const githubProvider = new GithubAuthProvider();
 
         // DOM Elements
-        const searchInput = document.getElementById("searchInput");
-        const searchSection = document.querySelector(".search-section");
-        const searchBackdrop = document.getElementById("searchBackdrop");
+        const searchInput = document.getElementById("searchInput") || document.createElement("input"); // no search bar on this page
+        const searchSection = document.querySelector(".search-section") || document.createElement("div");
+        const searchBackdrop = document.getElementById("searchBackdrop") || document.createElement("div");
         const dropdownItems = document.querySelectorAll(".dropdown-item");
         const gameCards = document.querySelectorAll(".game-card");
         const categories = document.querySelectorAll(".category");
