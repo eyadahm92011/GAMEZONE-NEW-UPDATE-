@@ -7,15 +7,16 @@
     <meta name="theme-color" content="#080808">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GAMEZONE | Game Passes &amp; Coins</title>
-    <meta name="description" content="Discover and shop popular games at GAMEZONE.">
+    <title>Arcade Sphere | Game Passes &amp; Coins</title>
+    <meta name="description" content="Discover and shop popular games at Arcade Sphere.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <!-- NAVBAR -->
     <header>
-        <a href="index.html" class="logo" style="text-decoration:none;color:inherit">GAME<span>ZONE</span></a>
+        <a href="index.html" class="logo" style="text-decoration:none;color:inherit">ARCADE <span>SPHERE</span></a>
 
         <nav>
             <a href="index.html#home">Home</a>
@@ -159,8 +160,8 @@
             <div class="checkout-order" id="checkoutOrderSummary"></div>
             <section class="checkout-stage" id="checkoutEmailStage">
                 <h3>Send an email</h3>
-                <p>We’ll email a one-time six-digit code to your GAMEZONE account address.</p>
-                <label for="checkoutEmail">GAMEZONE account email</label>
+                <p>We’ll email a one-time six-digit code to your Arcade Sphere account address.</p>
+                <label for="checkoutEmail">Arcade Sphere account email</label>
                 <input id="checkoutEmail" type="email" autocomplete="email" placeholder="you@example.com" readonly required>
                 <button class="checkout-btn" id="sendCheckoutEmailBtn" type="button">Send verification code</button>
             </section>
@@ -182,7 +183,7 @@
                 <button class="checkout-btn" id="whatsappOrderBtn" type="button">Go to WhatsApp</button>
             </section>
             <p class="checkout-status" id="checkoutStatus" role="status" aria-live="polite"></p>
-            <p class="checkout-footnote">WhatsApp opens with your order prefilled. Review it and press Send to contact GAMEZONE.</p>
+            <p class="checkout-footnote">WhatsApp opens with your order prefilled. Review it and press Send to contact Arcade Sphere.</p>
         </section>
     </div>
 
@@ -465,9 +466,9 @@
 
     <!-- FOOTER -->
     <footer id="about">
-        <h2>GAME<span>ZONE</span></h2>
+        <h2>ARCADE <span>SPHERE</span></h2>
         <p>Your ultimate gaming destination.</p>
-        <p class="copyright">© 2026 GAMEZONE. All rights reserved.</p>
+        <p class="copyright">© 2026 Arcade Sphere. All rights reserved.</p>
     </footer>
 
     <style>
@@ -1602,7 +1603,7 @@
         }
     }
 
-    /* GAMEZONE POLISH: responsive layout, clear states, and keyboard focus */
+    /* Arcade Sphere POLISH: responsive layout, clear states, and keyboard focus */
     :root { color-scheme: dark; }
     html { scroll-padding-top: 88px; }
     button, input { font: inherit; }
@@ -1610,7 +1611,7 @@
     .game-card { display: flex; flex-direction: column; min-height: 100%; box-shadow: 0 12px 32px rgba(0,0,0,.18); }
     .game-card[hidden], .empty-results[hidden] { display: none !important; }
     .game-img { position: relative; overflow: hidden; }
-    .game-img::after { content: "GAMEZONE PICK"; position: absolute; left: 14px; top: 14px; padding: 6px 10px; border-radius: 999px; background: rgba(0,0,0,.55); font-size: 10px; letter-spacing: 1px; }
+    .game-img::after { content: "ARCADE SPHERE PICK"; position: absolute; left: 14px; top: 14px; padding: 6px 10px; border-radius: 999px; background: rgba(0,0,0,.55); font-size: 10px; letter-spacing: 1px; }
     .game-info { display: flex; flex: 1; flex-direction: column; }
     .game-bottom { margin-top: auto; padding-top: 18px; }
     .add-btn { box-shadow: 0 5px 18px rgba(0,255,136,.2); }
@@ -1686,7 +1687,7 @@
     .mini-game-actions button:hover { filter:brightness(1.12); }
     @media(max-width:640px) { .mini-game-card{padding:16px}.mini-game-heading{align-items:flex-start;flex-direction:column}.mini-game-heading-side{width:100%;justify-content:space-between;gap:12px}.mini-game-controls{align-items:stretch;flex-direction:column}.mini-game-actions{justify-content:center}.mini-game-heading h2{font-size:24px} }
     
-    /* CURRENCY SETTINGS AND GAMEZONE POINT OFFERS */
+    /* CURRENCY SETTINGS AND Arcade Sphere POINT OFFERS */
     .currency-setting { display:flex; align-items:center; gap:5px; color:#9aa4b6; font-size:10px; font-weight:700; }
     .currency-setting select { max-width:76px; padding:8px 5px; border:1px solid #333; border-radius:8px; background:#151515; color:#fff; font-weight:700; cursor:pointer; }
     .loyalty-offer-guide { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin:0 0 22px; padding:12px 15px; border:1px solid rgba(0,255,136,.25); border-radius:10px; background:rgba(0,255,136,.045); color:#abb6c4; font-size:12px; }
@@ -2146,7 +2147,7 @@
             const offerNote = checkoutOffer ? `<small>${checkoutOffer.percent}% offer applied · ${checkoutOffer.points.toLocaleString()} points will be used</small>` : "";
             document.getElementById("checkoutOrderSummary").innerHTML = `<span>${quantity} item${quantity === 1 ? "" : "s"} in your order${offerNote}</span><strong>${formatMoney(total)}</strong>`;
             setCheckoutStep("email");
-            if (!auth.currentUser) checkoutStatus.textContent = "Sign in or create a GAMEZONE account before verifying your email.";
+            if (!auth.currentUser) checkoutStatus.textContent = "Sign in or create a Arcade Sphere account before verifying your email.";
             checkoutModal.classList.add("active");
             checkoutModal.setAttribute("aria-hidden", "false");
         }
@@ -2160,7 +2161,7 @@
             const code = error?.code || "";
             if (code.includes("too-many-requests")) return "Too many verification emails were requested. Please wait and try again later.";
             if (code.includes("unauthorized-continue-uri") || code.includes("invalid-continue-uri")) return "This website address is not authorized in Firebase Authentication. Add localhost to the authorized domains in Firebase Console.";
-            if (code.includes("network-request-failed")) return "Could not reach Firebase. Check your internet connection and reload GAMEZONE.";
+            if (code.includes("network-request-failed")) return "Could not reach Firebase. Check your internet connection and reload Arcade Sphere.";
             return error?.message || fallback;
         }
 
@@ -2169,10 +2170,10 @@
         checkoutModal.addEventListener("click", event => { if (event.target === checkoutModal) closeCheckout(); });
         async function sendCheckoutEmail() {
             const user = auth.currentUser;
-            if (!user?.email) { checkoutStatus.textContent = "Sign in or create a GAMEZONE account before sending the code."; return; }
+            if (!user?.email) { checkoutStatus.textContent = "Sign in or create a Arcade Sphere account before sending the code."; return; }
             if (checkoutEmailSending) return;
             if (location.protocol === "file:") {
-                checkoutStatus.textContent = "Open GAMEZONE from http://localhost:8765/GAMING.html so the email service can send your code.";
+                checkoutStatus.textContent = "Open Arcade Sphere from http://localhost:8765/GAMING.html so the email service can send your code.";
                 return;
             }
             if (checkoutCodeSentAt && Date.now() - checkoutCodeSentAt < 60_000) {
@@ -2272,9 +2273,9 @@
             const lines = cartList.map(item => `• ${item.name} × ${item.quantity} — ${item.price === 0 ? "Free" : formatMoney(item.price * item.quantity * discount)}`);
             const total = cartList.reduce((sum, item) => sum + item.price * item.quantity, 0) * discount;
             const message = [
-                "Hello GAMEZONE, I would like to place this order:",
+                "Hello Arcade Sphere, I would like to place this order:",
                 ...lines,
-                offer ? `GAMEZONE offer: ${offer.percent}% off (${offer.points.toLocaleString()} points)` : "",
+                offer ? `Arcade Sphere offer: ${offer.percent}% off (${offer.points.toLocaleString()} points)` : "",
                 `Total shown on the website: ${formatMoney(total)}`,
                 `Full name: ${checkoutFullNameInput.value.trim()}`,
                 `Age: ${checkoutAgeInput.value}`,
@@ -2473,7 +2474,7 @@
     </script>
 
 <style>
-/* ===== GAMEZONE UPGRADE: animations, features, mobile ===== */
+/* ===== Arcade Sphere UPGRADE: animations, features, mobile ===== */
 #gzProgress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#00ff88,#00c8ff,#a855f7);z-index:9999;pointer-events:none}
 #gzBg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.55}
 body.light #gzBg{opacity:.35}
@@ -2588,7 +2589,7 @@ body.light .gz-chip.on{background:#00c26e;color:#fff}
 }
 </style>
 <script>
-/* ===== GAMEZONE UPGRADE ===== */
+/* ===== Arcade Sphere UPGRADE ===== */
 (function(){
   const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2769,7 +2770,7 @@ body.light .gzr-ta{background:#fff;color:#111;border-color:#ccc}
 .gzr-empty{opacity:.6;text-align:center;padding:14px}
 </style>
 <script>
-/* ===== GAMEZONE: Sale countdown banner =====
+/* ===== Arcade Sphere: Sale countdown banner =====
    Edit GZ_SALE to change the sale. Set enabled:false to turn it off.
    endsAt = when the sale ends (your local time zone is written as +03:00 for Egypt). */
 (function(){
@@ -2815,7 +2816,7 @@ body.light .gzr-ta{background:#fff;color:#111;border-color:#ccc}
 })();
 </script>
 <script type="module">
-/* ===== GAMEZONE: Reviews & ratings (login required to post) ===== */
+/* ===== Arcade Sphere: Reviews & ratings (login required to post) ===== */
 import { getApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { getFirestore, collection, getDocs, doc, setDoc, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
@@ -2921,43 +2922,43 @@ new MutationObserver(()=>{if(panel&&!panel.hidden)return}).observe(document.docu
 loadReviews().then(decorateAll);decorateAll();
 </script>
 <script>
-/* ===== GAMEZONE: Arabic / English ===== */
+/* ===== Arcade Sphere: Arabic / English ===== */
 (function(){
   const KEY='gz_lang';
   const D={
-  'GAMEZONE | Find Your Next Game':'جيمزون | اعثر على لعبتك القادمة','GAMEZONE | Game Passes & Coins':'جيمزون | اشتراكات وعملات الألعاب',
-  'Contact':'تواصل','Call of Duty 4 CP':'نقاط كول أوف ديوتي 4','Minecraft Coins':'عملات ماينكرافت','eFootball Coins':'عملات eFootball','FC Mobile Coins':'عملات FC Mobile','FC Coins (PS4, PS5 or PC)':'عملات FC (PS4 وPS5 وPC)','Call of Duty':'كول أوف ديوتي','Minecraft':'ماينكرافت','FC Mobile':'FC موبايل','EA FC':'EA FC','GAMEZONE | Contact Us':'جيمزون | تواصل معنا','Home':'الرئيسية','Games':'الألعاب','GAMES':'الألعاب','Passes & Coins':'الاشتراكات والعملات','About':'من نحن','Passes':'الاشتراكات','Cart':'السلة','Account':'الحساب',
+  'Arcade Sphere | Find Your Next Game':'أركيد سفير | اعثر على لعبتك القادمة','Arcade Sphere | Game Passes & Coins':'أركيد سفير | اشتراكات وعملات الألعاب',
+  'Contact':'تواصل','Call of Duty 4 CP':'نقاط كول أوف ديوتي 4','Minecraft Coins':'عملات ماينكرافت','eFootball Coins':'عملات eFootball','FC Mobile Coins':'عملات FC Mobile','FC Coins (PS4, PS5 or PC)':'عملات FC (PS4 وPS5 وPC)','Call of Duty':'كول أوف ديوتي','Minecraft':'ماينكرافت','FC Mobile':'FC موبايل','EA FC':'EA FC','Arcade Sphere | Contact Us':'أركيد سفير | تواصل معنا','Home':'الرئيسية','Games':'الألعاب','GAMES':'الألعاب','Passes & Coins':'الاشتراكات والعملات','About':'من نحن','Passes':'الاشتراكات','Cart':'السلة','Account':'الحساب',
   'Currency':'العملة','My Account':'حسابي','Login':'تسجيل الدخول','Register':'إنشاء حساب','Email':'البريد الإلكتروني','Password':'كلمة المرور','Log In':'دخول','Username':'اسم المستخدم','Create Account':'إنشاء حساب','OR':'أو',
   'Continue with Google':'المتابعة عبر Google','Continue with GitHub':'المتابعة عبر GitHub','User':'مستخدم','Orders':'الطلبات','Points':'النقاط','Log Out':'تسجيل الخروج','Social Login':'تسجيل اجتماعي',
   'Your Cart':'سلة المشتريات','Your cart is empty.':'سلتك فارغة.','Total:':'الإجمالي:','Proceed to Checkout':'إتمام الشراء',
   'EMAIL VERIFICATION · WHATSAPP ORDER':'التحقق بالبريد · الطلب عبر واتساب','Complete your order':'أكمل طلبك','1. Email':'١. البريد','2. Your details':'٢. بياناتك','3. WhatsApp':'٣. واتساب',
-  'Send an email':'أرسل رسالة بريد','We’ll email a one-time six-digit code to your GAMEZONE account address.':'سنرسل رمزًا مكوّنًا من ستة أرقام إلى بريد حسابك في جيمزون.',
-  'GAMEZONE account email':'بريد حساب جيمزون','Send verification code':'إرسال رمز التحقق','Verify email and add your details':'تحقق من بريدك وأضف بياناتك',
+  'Send an email':'أرسل رسالة بريد','We’ll email a one-time six-digit code to your Arcade Sphere account address.':'سنرسل رمزًا مكوّنًا من ستة أرقام إلى بريد حسابك في أركيد سفير.',
+  'Arcade Sphere account email':'بريد حساب أركيد سفير','Send verification code':'إرسال رمز التحقق','Verify email and add your details':'تحقق من بريدك وأضف بياناتك',
   'Enter the six-digit code, your full name, and your age. You must be 15 or older to continue.':'أدخل الرمز المكوّن من ستة أرقام واسمك الكامل وعمرك. يجب أن يكون عمرك 15 عامًا أو أكثر للمتابعة.',
   'Email code':'رمز البريد','Full name':'الاسم الكامل','Age (15+)':'العمر (15+)','Verify code and continue':'تحقق من الرمز وتابع','Resend code':'إعادة إرسال الرمز',
   'Send your order':'أرسل طلبك','Your email, name, age, and order summary will be prefilled in WhatsApp. Review the message before sending.':'سيتم تعبئة بريدك واسمك وعمرك وملخص طلبك في واتساب. راجع الرسالة قبل الإرسال.',
-  'Go to WhatsApp':'الذهاب إلى واتساب','WhatsApp opens with your order prefilled. Review it and press Send to contact GAMEZONE.':'سيفتح واتساب وطلبك مكتوب مسبقًا. راجعه واضغط إرسال للتواصل مع جيمزون.',
+  'Go to WhatsApp':'الذهاب إلى واتساب','WhatsApp opens with your order prefilled. Review it and press Send to contact Arcade Sphere.':'سيفتح واتساب وطلبك مكتوب مسبقًا. راجعه واضغط إرسال للتواصل مع أركيد سفير.',
   'WELCOME TO':'مرحبًا بك في','Discover amazing games, explore new worlds, and find your next favorite adventure.':'اكتشف ألعابًا رائعة، واستكشف عوالم جديدة، واعثر على مغامرتك المفضلة القادمة.',
   'EXPLORE GAMES':'تصفّح الألعاب','PLAY MINI GAME':'العب لعبة صغيرة','PASSES & COINS':'الاشتراكات والعملات','POPULAR CATEGORIES':'أقسام شائعة',
   'GTA V Coins & Items':'عملات وعناصر GTA V','EA Sports FC Coins':'عملات EA Sports FC','Minecraft Items & Coins':'عناصر وعملات Minecraft','Forza Horizon Cars':'سيارات Forza Horizon','Call of Duty Points':'نقاط Call of Duty',
-  'All':'الكل','Action':'أكشن','Racing':'سباقات','Sports':'رياضة','Adventure':'مغامرة','Popular Games':'ألعاب شائعة','GAMEZONE OFFERS':'عروض جيمزون',
-  'ENHANCED':'نسخة محسّنة','GAMEZONE PICK':'اختيار جيمزون','JAPAN AWAITS':'اليابان في انتظارك','COMING NOV 19, 2026':'قريبًا 19 نوفمبر 2026','FOOTBALL':'كرة القدم','BASKETBALL':'كرة السلة','NEW RELEASE':'إصدار جديد',
+  'All':'الكل','Action':'أكشن','Racing':'سباقات','Sports':'رياضة','Adventure':'مغامرة','Popular Games':'ألعاب شائعة','ARCADE SPHERE OFFERS':'عروض أركيد سفير',
+  'ENHANCED':'نسخة محسّنة','ARCADE SPHERE PICK':'اختيار أركيد سفير','JAPAN AWAITS':'اليابان في انتظارك','COMING NOV 19, 2026':'قريبًا 19 نوفمبر 2026','FOOTBALL':'كرة القدم','BASKETBALL':'كرة السلة','NEW RELEASE':'إصدار جديد',
   'DARK FANTASY RPG':'لعبة أدوار فانتازيا مظلمة','BE GREATER. TOGETHER.':'كونوا أعظم. معًا.','NIGHT CITY':'نايت سيتي','BUILT FOR MOTORSPORT':'صُنعت لرياضة المحركات','BUILD YOUR EMPIRE':'ابنِ إمبراطوريتك',
   'Game Passes & Coins':'اشتراكات وعملات الألعاب','Game Pass, PlayStation Plus, Xbox Live and Free Fire coins.':'جيم باس وبلايستيشن بلس وإكس بوكس لايف وعملات فري فاير.','BROWSE PASSES & COINS':'تصفّح الاشتراكات والعملات',
-  'PLAY FOR FREE':'العب مجانًا','Neon Dodger':'مراوغ النيون','Every 50 score earns 10 account points. Save points toward GAMEZONE offers.':'كل 50 نقطة تمنحك 10 نقاط في حسابك. اجمع النقاط للحصول على عروض جيمزون.',
+  'PLAY FOR FREE':'العب مجانًا','Neon Dodger':'مراوغ النيون','Every 50 score earns 10 account points. Save points toward Arcade Sphere offers.':'كل 50 نقطة تمنحك 10 نقاط في حسابك. اجمع النقاط للحصول على عروض أركيد سفير.',
   'MODE':'الوضع','Medium':'متوسط','Hard':'صعب','SCORE':'النتيجة','BEST':'الأفضل','Start Game':'ابدأ اللعبة','Restart':'إعادة','Play Again':'العب مرة أخرى',
   'Press Start, then move with ← → or A / D. On touch screens, drag on the game.':'اضغط ابدأ ثم تحرّك بالأسهم ← → أو A / D. على شاشات اللمس اسحب فوق اللعبة.',
-  'Your ultimate gaming destination.':'وجهتك الأولى للألعاب.','© 2026 GAMEZONE. All rights reserved.':'© 2026 جيمزون. جميع الحقوق محفوظة.',
+  'Your ultimate gaming destination.':'وجهتك الأولى للألعاب.','© 2026 Arcade Sphere. All rights reserved.':'© 2026 أركيد سفير. جميع الحقوق محفوظة.',
   '← Back to Menu':'→ العودة إلى القائمة','Game Passes':'الاشتراكات','SUBSCRIPTION':'اشتراك','TOP-UP':'شحن','Game Pass':'جيم باس','PlayStation Plus':'بلايستيشن بلس','Xbox Live':'إكس بوكس لايف',
   'Free Fire Coins':'عملات فري فاير','PUBG Mobile UC':'شدّات ببجي موبايل (UC)','PUBG UC':'شدّات ببجي (UC)','Fortnite V-Bucks':'في-باكس فورتنايت','POPULAR':'الأكثر طلبًا','Free':'مجاني',
   'Sort: Featured':'الترتيب: المميز','Price: Low → High':'السعر: من الأقل للأعلى','Price: High → Low':'السعر: من الأعلى للأقل','Name: A → Z':'الاسم: أ → ي','♥ Wishlist':'♥ المفضلة',
   '🛒 Added to cart':'🛒 تمت الإضافة إلى السلة','♥ Saved to wishlist':'♥ تمت الإضافة إلى المفضلة','Removed from wishlist':'تمت الإزالة من المفضلة','No wishlist items here yet — tap the ♡ on any card.':'لا توجد عناصر مفضلة هنا بعد — اضغط ♡ على أي بطاقة.',
   'No games match your search. Try another title or category.':'لا توجد ألعاب مطابقة لبحثك. جرّب اسمًا أو قسمًا آخر.','Earn 500 points to unlock your first offer.':'اجمع 500 نقطة لفتح أول عرض لك.','Sign in to unlock account-point offers.':'سجّل الدخول لفتح عروض النقاط.',
   'Send verification code':'إرسال رمز التحقق','Your cart is empty. Add a game before checkout.':'سلتك فارغة. أضف لعبة قبل إتمام الشراء.','LOGIN FIRST to add games to your cart.':'سجّل الدخول أولًا لإضافة الألعاب إلى سلتك.',
-  'Sign in or create a GAMEZONE account before verifying your email.':'سجّل الدخول أو أنشئ حساب جيمزون قبل التحقق من بريدك.','Sign in or create a GAMEZONE account before sending the code.':'سجّل الدخول أو أنشئ حساب جيمزون قبل إرسال الرمز.',
+  'Sign in or create a Arcade Sphere account before verifying your email.':'سجّل الدخول أو أنشئ حساب أركيد سفير قبل التحقق من بريدك.','Sign in or create a Arcade Sphere account before sending the code.':'سجّل الدخول أو أنشئ حساب أركيد سفير قبل إرسال الرمز.',
   'Enter your full name to continue.':'أدخل اسمك الكامل للمتابعة.','Enter a valid age between 1 and 120.':'أدخل عمرًا صحيحًا بين 1 و120.','Checkout canceled. You must be at least 15 years old to place an order.':'تم إلغاء الطلب. يجب ألا يقل عمرك عن 15 عامًا لإتمام الطلب.',
   'Your code expired. Send a new code to continue.':'انتهت صلاحية الرمز. أرسل رمزًا جديدًا للمتابعة.','Too many incorrect attempts. Send a new code to continue.':'محاولات خاطئة كثيرة. أرسل رمزًا جديدًا للمتابعة.','Your details are ready. Continue to WhatsApp to send your order.':'بياناتك جاهزة. تابع إلى واتساب لإرسال طلبك.',
-  'Too many verification emails were requested. Please wait and try again later.':'تم طلب رسائل تحقق كثيرة. يرجى الانتظار والمحاولة لاحقًا.','Could not reach Firebase. Check your internet connection and reload GAMEZONE.':'تعذّر الاتصال بـ Firebase. تحقق من الإنترنت وأعد تحميل الصفحة.',
+  'Too many verification emails were requested. Please wait and try again later.':'تم طلب رسائل تحقق كثيرة. يرجى الانتظار والمحاولة لاحقًا.','Could not reach Firebase. Check your internet connection and reload Arcade Sphere.':'تعذّر الاتصال بـ Firebase. تحقق من الإنترنت وأعد تحميل الصفحة.',
   'Remove item':'إزالة العنصر','Switch color theme':'تبديل لون الواجهة','Display currency':'عملة العرض','Open shopping cart':'فتح السلة','Add item to cart':'أضف إلى السلة','Close checkout':'إغلاق','Checkout progress':'تقدّم الطلب','Sort':'ترتيب','Back to top':'للأعلى','Quick navigation':'تنقّل سريع',
   'Enter your email':'أدخل بريدك الإلكتروني','Enter password':'أدخل كلمة المرور','Choose a username':'اختر اسم مستخدم','Create password':'أنشئ كلمة مرور','Enter your full name':'أدخل اسمك الكامل','Enter your age':'أدخل عمرك','Search for games, coins, or items...':'ابحث عن ألعاب أو عملات أو عناصر...',
   'Reviews':'التقييمات','Be the first to review':'كن أول من يقيّم','Your rating':'تقييمك','Share your experience (short comment)':'شاركنا تجربتك (تعليق قصير)','Post review':'نشر التقييم','Update review':'تحديث التقييم','Log in to write a review':'سجّل الدخول لكتابة تقييم','Log in':'تسجيل الدخول','No reviews yet.':'لا توجد تقييمات بعد.','Please choose a star rating.':'اختر عدد النجوم.','Please write a short comment.':'اكتب تعليقًا قصيرًا.','Thanks! Your review was posted.':'شكرًا! تم نشر تقييمك.','Could not save your review. Try again.':'تعذّر حفظ تقييمك. حاول مرة أخرى.','Online reviews are not enabled yet — reviews are saved on this device only.':'التقييمات الأونلاين غير مفعّلة بعد — تُحفظ التقييمات على هذا الجهاز فقط.','Loading reviews…':'جارٍ تحميل التقييمات…','Reviewer':'مشتري','Close':'إغلاق',
@@ -3058,5 +3059,10 @@ loadReviews().then(decorateAll);decorateAll();
   apply();
 })();
 </script>
+<style>/* longer brand name */.logo{white-space:nowrap}@media(max-width:600px){.logo{font-size:16px!important;letter-spacing:0!important}}@media(max-width:380px){.logo{font-size:14px!important}}</style>
+<style>/* Bold Fraktur for the brand name only */
+.logo,.hero h1,footer h2{font-family:'UnifrakturCook','Old English Text MT',serif!important;font-weight:700;letter-spacing:.5px}
+.logo span,.hero h1 span,footer h2 span{font-family:inherit!important}
+</style>
 </body>
 </html>
