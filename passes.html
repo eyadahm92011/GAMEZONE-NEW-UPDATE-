@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arcade Sphere | Game Passes &amp; Coins</title>
     <meta name="description" content="Discover and shop popular games at Arcade Sphere.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -3060,9 +3059,11 @@ loadReviews().then(decorateAll);decorateAll();
 })();
 </script>
 <style>/* longer brand name */.logo{white-space:nowrap}@media(max-width:600px){.logo{font-size:16px!important;letter-spacing:0!important}}@media(max-width:380px){.logo{font-size:14px!important}}</style>
-<style>/* Bold Fraktur for the brand name only */
-.logo,.hero h1,footer h2{font-family:'UnifrakturCook','Old English Text MT',serif!important;font-weight:700;letter-spacing:.5px}
-.logo span,.hero h1 span,footer h2 span{font-family:inherit!important}
+<style>/* Brand name: normal font, blue and black */
+.logo,.hero h1,footer h2{font-family:inherit!important;letter-spacing:inherit;color:#2f8cff!important;background:none!important;-webkit-text-fill-color:#2f8cff!important;text-shadow:none!important}
+.logo span,.hero h1 span,footer h2 span{color:#000!important;-webkit-text-fill-color:#000!important;-webkit-text-stroke:1px #4da3ff;paint-order:stroke fill;text-shadow:0 0 12px rgba(47,140,255,.55)!important;background:none!important}
+body.light .logo,body.light .hero h1,body.light footer h2{color:#1d6fe0!important;-webkit-text-fill-color:#1d6fe0!important}
+body.light .logo span,body.light .hero h1 span,body.light footer h2 span{-webkit-text-stroke:0;text-shadow:none!important}
 </style>
 </body>
 </html>
