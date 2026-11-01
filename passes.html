@@ -21,6 +21,7 @@
             <a href="index.html#home">Home</a>
             <a href="index.html#categories">Games</a>
             <a href="passes.html">Passes &amp; Coins</a>
+            <a href="giftcards.html">Gift Cards</a>
             <a href="contact.html">Contact</a>
             <a href="#about">About</a>
         </nav>
@@ -2688,8 +2689,9 @@ body.light .gz-chip.on{background:#1d70e0;color:#fff}
   /* mobile tab bar */
   const tab=document.createElement('nav');tab.className='gz-tabbar';tab.setAttribute('aria-label','Quick navigation');
   const onContact=!!$('.gz-contact');
+  const onGift=!!$('.gc-page');
   const onPasses=!!$('.pass-card')&&!$('.hero');
-  tab.innerHTML=`<a href="index.html#home" class="${onPasses||onContact?'':'on'}"><span>🏠</span>Home</a><a href="index.html#categories"><span>🎮</span>Games</a><a href="passes.html" class="${onPasses?'on':''}"><span>💎</span>Passes</a><a href="contact.html" class="${onContact?'on':''}"><span>📞</span>Contact</a><button type="button" data-t="cart"><span>🛒</span>Cart</button><button type="button" data-t="acc"><span>👤</span>Account</button>`;
+  tab.innerHTML=`<a href="index.html#home" class="${onPasses||onContact||onGift?'':'on'}"><span>🏠</span>Home</a><a href="index.html#categories"><span>🎮</span>Games</a><a href="passes.html" class="${onPasses?'on':''}"><span>💎</span>Passes</a><a href="giftcards.html" class="${onGift?'on':''}"><span>🎁</span>Cards</a><a href="contact.html" class="${onContact?'on':''}"><span>📞</span>Contact</a><button type="button" data-t="cart"><span>🛒</span>Cart</button><button type="button" data-t="acc"><span>👤</span>Account</button>`;
   tab.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;(b.dataset.t==='cart'?$('#cartBtn'):$('#accountNavBtn'))?.click()});
   document.body.appendChild(tab);
 
@@ -2926,7 +2928,7 @@ loadReviews().then(decorateAll);decorateAll();
   const KEY='gz_lang';
   const D={
   'Arcade Sphere | Find Your Next Game':'أركيد سفير | اعثر على لعبتك القادمة','Arcade Sphere | Game Passes & Coins':'أركيد سفير | اشتراكات وعملات الألعاب',
-  'Contact':'تواصل','Call of Duty 4 CP':'نقاط كول أوف ديوتي 4','Minecraft Coins':'عملات ماينكرافت','eFootball Coins':'عملات eFootball','FC Mobile Coins':'عملات FC Mobile','FC Coins (PS4, PS5 or PC)':'عملات FC (PS4 وPS5 وPC)','Call of Duty':'كول أوف ديوتي','Minecraft':'ماينكرافت','FC Mobile':'FC موبايل','EA FC':'EA FC','Arcade Sphere | Contact Us':'أركيد سفير | تواصل معنا','Home':'الرئيسية','Games':'الألعاب','GAMES':'الألعاب','Passes & Coins':'الاشتراكات والعملات','About':'من نحن','Passes':'الاشتراكات','Cart':'السلة','Account':'الحساب',
+  'Contact':'تواصل','Gift cards & top-ups':'بطاقات الهدايا والشحن','Instant digital codes for Steam and Epic Games.':'أكواد رقمية فورية لستيم وإيبك جيمز.','Store (your account country)':'المتجر (دولة حسابك)','Amount':'المبلغ','Add to cart':'أضف إلى السلة','Code on screen right after payment':'يظهر الكود على الشاشة بعد الدفع مباشرة','How do I check?':'كيف أتحقق؟','Most bought':'الأكثر شراءً','Added ✓':'تمت الإضافة ✓','Show fewer':'عرض أقل','Call of Duty 4 CP':'نقاط كول أوف ديوتي 4','Minecraft Coins':'عملات ماينكرافت','eFootball Coins':'عملات eFootball','FC Mobile Coins':'عملات FC Mobile','FC Coins (PS4, PS5 or PC)':'عملات FC (PS4 وPS5 وPC)','Call of Duty':'كول أوف ديوتي','Minecraft':'ماينكرافت','FC Mobile':'FC موبايل','EA FC':'EA FC','Arcade Sphere | Contact Us':'أركيد سفير | تواصل معنا','Home':'الرئيسية','Games':'الألعاب','GAMES':'الألعاب','Passes & Coins':'الاشتراكات والعملات','About':'من نحن','Passes':'الاشتراكات','Cart':'السلة','Account':'الحساب',
   'Currency':'العملة','My Account':'حسابي','Login':'تسجيل الدخول','Register':'إنشاء حساب','Email':'البريد الإلكتروني','Password':'كلمة المرور','Log In':'دخول','Username':'اسم المستخدم','Create Account':'إنشاء حساب','OR':'أو',
   'Continue with Google':'المتابعة عبر Google','Continue with GitHub':'المتابعة عبر GitHub','User':'مستخدم','Orders':'الطلبات','Points':'النقاط','Log Out':'تسجيل الخروج','Social Login':'تسجيل اجتماعي',
   'Your Cart':'سلة المشتريات','Your cart is empty.':'سلتك فارغة.','Total:':'الإجمالي:','Proceed to Checkout':'إتمام الشراء',
@@ -3065,5 +3067,6 @@ loadReviews().then(decorateAll);decorateAll();
 body.light .logo,body.light .hero h1,body.light footer h2{color:#1d6fe0!important;-webkit-text-fill-color:#1d6fe0!important}
 body.light .logo span,body.light .hero h1 span,body.light footer h2 span{-webkit-text-stroke:0;text-shadow:none!important}
 </style>
+<style>@media(max-width:420px){.gz-tabbar a,.gz-tabbar button{font-size:10px!important}.gz-tabbar span{font-size:18px!important}}</style>
 </body>
 </html>
